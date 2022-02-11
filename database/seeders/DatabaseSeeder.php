@@ -63,18 +63,18 @@ class DatabaseSeeder extends Seeder
 
         // bidan
         $token = Str::random(16);
-        $role = "bidan";
-        $hashPassword = Hash::make('bidan', [
+        $role = "pendaftar";
+        $hashPassword = Hash::make('pendaftar', [
             'rounds' => 12,
         ]);
         $hashToken = Hash::make($token, [
             'rounds' => 12,
         ]);
         Login::create([
-            'login_nama' => 'bidan 1',
-            'login_username' => 'bidan',
+            'login_nama' => 'pendaftar 1',
+            'login_username' => 'pendaftar',
             'login_password' => $hashPassword,
-            'login_email' => 'bidan@gmail.com',
+            'login_email' => 'pendaftar@gmail.com',
             'login_telepon' => '085342072185',
             'login_token' => $hashToken,
             'login_level' => $role,
