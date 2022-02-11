@@ -84,11 +84,9 @@ class BackController extends Controller
             'login_telepon' => 'required',
             'login_alamat' => 'required'
         ]);
-
         if ($validatedLogin["login_password"] !== $request->login_password2) {
             return back()->with('status', 'Password harus sama.')->withInput();
         }
-
         $hashPassword = Hash::make($validatedLogin["login_password"], [
             'rounds' => 12,
         ]);
