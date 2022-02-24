@@ -52,7 +52,7 @@ class BackController extends Controller
                     }
                 }
                 break;
-            case 'pendaftar':
+            case 'panitia':
                 $cek_password = Hash::check($request->login_password, $data_login->login_password);
                 if ($data_login) {
                     if ($cek_password) {
@@ -61,7 +61,7 @@ class BackController extends Controller
                     }
                 }
                 break;
-            case 'user':
+            case 'pendaftar':
                 $cek_password = Hash::check($request->login_password, $data_login->login_password);
                 if ($data_login) {
                     if ($cek_password) {

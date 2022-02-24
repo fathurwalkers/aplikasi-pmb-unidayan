@@ -15,9 +15,8 @@ class CreateLoginsTable extends Migration
             $table->string('login_password')->nullable();
             $table->string('login_email')->unique()->nullable();
             $table->string('login_telepon')->nullable();
-            $table->string('login_alamat')->nullable();
             $table->text('login_token')->nullable();
-            $table->string('login_level')->nullable(); // ADMIN - MAHASISWA - USER
+            $table->string('login_level')->nullable(); // ADMIN - PENDAFTAR - PANITIA
             $table->string('login_status')->nullable(); // unverified / verified
             $table->timestamps();
         });
