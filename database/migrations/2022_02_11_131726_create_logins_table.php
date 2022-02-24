@@ -18,6 +18,10 @@ class CreateLoginsTable extends Migration
             $table->text('login_token')->nullable();
             $table->string('login_level')->nullable(); // ADMIN - PENDAFTAR - PANITIA
             $table->string('login_status')->nullable(); // unverified / verified
+
+            $table->unsignedBigInteger('data_id')->nullable()->default(null);
+            $table->foreign('data_id')->references('id')->on('data_mahasiswa')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

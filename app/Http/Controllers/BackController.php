@@ -14,7 +14,7 @@ class BackController extends Controller
 {
     public function index()
     {
-        return view('index');
+        return view('dashboard.index');
     }
 
     public function login()
