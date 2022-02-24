@@ -16,7 +16,7 @@ class GenerateController extends Controller
     public function generate_mahasiswa()
     {
         $faker                  = Faker::create('id_ID');
-        for ($i = 0; $i < 55; $i++) {
+        for ($i = 0; $i < 10; $i++) {
 
             // DATA MAHASISWA
             $arr_jenis_kelamin  = ["L", "P"];
