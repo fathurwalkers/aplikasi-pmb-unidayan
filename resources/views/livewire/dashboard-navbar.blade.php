@@ -4,8 +4,8 @@
         <li class="nav-item dropdown">
             <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
             <ul class="dropdown-menu">
-                <li><a class="nav-link" href="index-0.html">Beranda</a></li>
-                <li><a class="nav-link" href="index.html">Profil Pengguna</a></li>
+                <li><a class="nav-link" href="{{ route('dashboard') }}">Beranda</a></li>
+                <li><a class="nav-link" href="{{ route('profile') }}">Profil Pengguna</a></li>
             </ul>
         </li>
         <li class="menu-header">Pengelolaan</li>

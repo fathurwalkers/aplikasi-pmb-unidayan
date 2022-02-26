@@ -3,6 +3,7 @@
 use App\Http\Controllers\BackController;
 use App\Http\Livewire\DashboardIndex;
 use App\Http\Controllers\GenerateController;
+use App\Http\Livewire\DashboardProfile;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -12,6 +13,7 @@ Route::get('/', function () {
 Route::group(["prefix" => "/dashboard"], function () {
     // Route::get('/', [BackController::class, 'index'])->name('dashboard');
     Route::get('/', DashboardIndex::class)->name('dashboard');
+    Route::get('/profile', DashboardProfile::class)->name('profile');
 });
 
 
