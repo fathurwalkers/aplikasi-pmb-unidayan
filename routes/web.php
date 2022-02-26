@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BackController;
+use App\Http\Livewire\DashboardIndex;
 use App\Http\Controllers\GenerateController;
 use Illuminate\Support\Facades\Route;
 
@@ -9,7 +10,8 @@ Route::get('/', function () {
 });
 
 Route::group(["prefix" => "/dashboard"], function () {
-    Route::get('/', [BackController::class, 'index'])->name('dashboard');
+    // Route::get('/', [BackController::class, 'index'])->name('dashboard');
+    Route::get('/', DashboardIndex::class)->name('dashboard');
 });
 
 

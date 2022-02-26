@@ -53,16 +53,7 @@
 
       <!-- Main Content -->
       <div class="main-content">
-        <section class="section">
-          <div class="section-header">
-            <h1>@yield('content-header')</h1>
-          </div>
-
-          <div class="section-body">
-            @yield('content-body')
-          </div>
-
-        </section>
+        @yield('main-content')
       </div>
 
       <footer class="main-footer">
