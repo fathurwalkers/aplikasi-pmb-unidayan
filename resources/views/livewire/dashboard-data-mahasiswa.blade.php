@@ -12,7 +12,6 @@
         <div class="section-header">
           <h4 class="text-dark pl-2 mb-0">{{ $contentheader }}</h4>
         </div>
-
         <div class="section-body">
             <div class="card">
                 <div class="card-body">
@@ -129,9 +128,12 @@
                                                     {{-- @csrf --}}
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn gray btn-outline-secondary" data-dismiss="modal">Cancel</button>
-                                                        <button wire:click="hapusData({{ $item->id }})" class="btn btn-outline-danger" >
+                                                        <button wire:click="$emitSelf('hapus', {{ $item->id }})" class="btn btn-outline-danger" >
                                                             Delete
                                                         </button>
+                                                        {{-- <button wire:click="hapusData({{ $item->id }})" class="btn btn-outline-danger" >
+                                                            Delete
+                                                        </button> --}}
                                                     </div>
                                                 {{-- </form> --}}
 

@@ -122,6 +122,6 @@ class GenerateController extends Controller
             $login_data->data()->associate($save_mahasiswa->id);
             $login_data->save();
         }
-        return redirect()->route('dashboard');
+        return redirect()->route('data-mahasiswa');
     }
 }
