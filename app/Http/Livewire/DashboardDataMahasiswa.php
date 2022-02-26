@@ -21,8 +21,6 @@ class DashboardDataMahasiswa extends Component
 
     public function hapusData($mahasiswa_id)
     {
-        // dd($mahasiswa_id);
-        // die;
         $id = $mahasiswa_id;
         $findUser = Data::findOrFail($id);
         $findUser->forceDelete();
