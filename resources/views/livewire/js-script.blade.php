@@ -1,3 +1,7 @@
 <div>
-    {{-- Success is as dangerous as failure. --}}
+    <script>
+        $(document).ready(function() {
+            $('#example1').DataTable();
+        });
+    </script>
 </div>

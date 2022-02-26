@@ -18,7 +18,7 @@ Route::group(["prefix" => "/dashboard"], function () {
 
     // MAHASISWA
     Route::group(["prefix" => '/mahasiswa'], function () {
-        Route::get('/', [DashboardDataMahasiswa::class])->name('data-mahasiswa');
+        Route::get('/', DashboardDataMahasiswa::class)->name('data-mahasiswa');
     });
 });
 

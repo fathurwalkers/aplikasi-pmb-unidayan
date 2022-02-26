@@ -8,6 +8,8 @@ class JsScript extends Component
 {
     public function render()
     {
-        return view('livewire.js-script');
+        return view('livewire.js-script')
+        ->extends('layouts.admin-layout')
+        ->section('js');
     }
 }

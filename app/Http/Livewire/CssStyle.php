@@ -8,6 +8,8 @@ class CssStyle extends Component
 {
     public function render()
     {
-        return view('livewire.css-style');
+        return view('livewire.css-style')
+        ->extends('layouts.admin-layout')
+        ->section('css');
     }
 }

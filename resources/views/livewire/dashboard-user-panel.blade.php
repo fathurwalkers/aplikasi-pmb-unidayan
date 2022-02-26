@@ -14,9 +14,16 @@
                 <i class="fas fa-cog"></i> Settings
             </a>
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item has-icon text-danger">
-                <i class="fas fa-sign-out-alt"></i> Logout
-            </a>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12  mx-auto d-flex justify-content-center">
+                    <button class="btn btn-danger btn-md" wire:click="logout">
+                        Logout
+                    </button>
+                </div>
+            </div>
+
+
         </div>
     </li>
 </div>

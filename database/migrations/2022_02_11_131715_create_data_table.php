@@ -24,7 +24,7 @@ class CreateDataTable extends Migration
             $table->string('data_plihan_jurusan2')->nullable();
             $table->string('data_plihan_jurusan3')->nullable();
             $table->string('data_status_pendaftaran')->nullable(); // DISETUJUI / BELUM DISETUJUI
-            $table->string('data_status_pembayaran')->nullable(); // DIPROSES / SELESAI / BATAL
+            $table->string('data_status_pembayaran')->nullable(); // DIPROSES / SELESAI / DIBATALKAN
 
             $table->timestamps();
         });
