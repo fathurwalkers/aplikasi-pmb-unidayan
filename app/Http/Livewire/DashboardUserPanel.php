@@ -14,8 +14,8 @@ class DashboardUserPanel extends Component
 
     public function logout(Request $request)
     {
-        // $request->session()->forget(['data_login']);
+        $request->session()->forget(['data_login']);
         $request->session()->flush();
-        return redirect()->route('dashboard')->with('status', 'Anda berhasil Logout!');
+        return redirect()->route('login')->with('status', 'Anda berhasil Logout!');
     }
 }
