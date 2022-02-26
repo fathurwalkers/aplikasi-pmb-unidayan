@@ -20,6 +20,8 @@ class GenerateController extends Controller
 
             // DATA MAHASISWA
             $arr_jenis_kelamin  = ["L", "P"];
+            $arr_status_pendaftaran = ["DISETUJUI", "BELUM DISETUJUI"];
+            $arr_status_pembayaran = ["DIPROSES", "SELESAI", "DIBATALKAN"];
             $arr_number  = [1, 2, 3];
             $arr_jurusan = [
                 "Teknik Informatika",
@@ -49,6 +51,8 @@ class GenerateController extends Controller
                 "MAN 2 Baubau"
             ];
 
+            $random_status_pendaftaran = Arr::random($arr_status_pendaftaran);
+            $random_status_pembayaran = Arr::random($arr_status_pembayaran);
             $random_number = Arr::random($arr_number);
             $random_jurusan = Arr::random($arr_jurusan, 3);
             $random_sekolah = Arr::random($arr_sekolah);
@@ -83,8 +87,8 @@ class GenerateController extends Controller
                 'data_plihan_jurusan1' => $random_jurusan[0],
                 'data_plihan_jurusan2' => $random_jurusan[1],
                 'data_plihan_jurusan3' => $random_jurusan[2],
-                'data_status_pendaftaran' => "BELUM DISETUJUI",
-                'data_status_pembayaran' => "DIPROSES",
+                'data_status_pendaftaran' => $random_status_pendaftaran,
+                'data_status_pembayaran' => $random_status_pembayaran,
                 'created_at' => now(),
                 'updated_at' => now()
             ]);
