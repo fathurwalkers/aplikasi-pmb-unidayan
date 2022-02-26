@@ -1,5 +1,12 @@
 <div>
 
+    @section('css')
+    <style>
+        .modal-backdrop.show {
+            display: none !important;
+        }
+    </style>
+    @endsection
     <section class="section">
 
         <div class="section-header">
@@ -94,7 +101,7 @@
                                                         Ubah
                                                     </a>
 
-                                                    <a href="#" class="btn btn-danger rounded btn-sm" data-toggle="modal" data-target="#ModalDelete" >
+                                                    <a href="#" class="btn btn-danger rounded btn-sm" data-toggle="modal" data-target="#modaldelete{{ $item->id }}" >
                                                         <i class="fas fa-trash"></i>
                                                         Hapus
                                                     </a>
@@ -106,7 +113,7 @@
                                     </tr>
 
                                     {{-- MODAL --}}
-                                    <div class="modal fade" id="ModalDelete" tabindex="1" role="dialog" aria-hidden="true">
+                                    <div class="modal fade" id="modaldelete{{ $item->id }}" tabindex="1" role="dialog" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
 
@@ -118,15 +125,15 @@
                                                 </div>
 
                                                 <div class="modal-body">Apakah anda yakin ingin menghapus item ini? </div>
-                                                <form action="" method="POST" enctype="multipart/form-data">
-                                                    @csrf
+                                                {{-- <form action="" method="POST" enctype="multipart/form-data"> --}}
+                                                    {{-- @csrf --}}
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn gray btn-outline-secondary" data-dismiss="modal">Cancel</button>
-                                                        <button type="submit" class="btn btn-outline-danger">
+                                                        <button wire:click="hapusData({{ $item->id }})" class="btn btn-outline-danger" >
                                                             Delete
                                                         </button>
                                                     </div>
-                                                </form>
+                                                {{-- </form> --}}
 
                                             </div>
                                         </div>

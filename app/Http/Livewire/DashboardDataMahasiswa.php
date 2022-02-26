@@ -18,4 +18,14 @@ class DashboardDataMahasiswa extends Component
         ->extends('layouts.admin-layout')
         ->section('main-content');
     }
+
+    public function hapusData($mahasiswa_id)
+    {
+        // dd($mahasiswa_id);
+        // die;
+        $id = $mahasiswa_id;
+        $findUser = Data::findOrFail($id);
+        $findUser->forceDelete();
+        return redirect()->route('data-mahasiswa')->with('status', 'Data telah dihapus!');
+    }
 }
