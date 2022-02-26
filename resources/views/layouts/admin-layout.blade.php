@@ -14,7 +14,7 @@
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{ asset('stisla/assets') }}/css/style.css">
   <link rel="stylesheet" href="{{ asset('stisla/assets') }}/css/components.css">
-
+    @yield('css')
   @livewireStyles
 </head>
 
@@ -80,6 +80,7 @@
   <!-- Template JS File -->
   <script src="{{ asset('stisla/assets') }}/js/scripts.js"></script>
   <script src="{{ asset('stisla/assets') }}/js/custom.js"></script>
+  @yield('js')
   @livewireScripts
   <!-- Page Specific JS File -->
 </body>
