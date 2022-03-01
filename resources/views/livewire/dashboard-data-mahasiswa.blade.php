@@ -5,6 +5,14 @@
         .modal-backdrop.show {
             display: none !important;
         }
+
+        table.dataTable tbody td {
+            padding: 8px 2px!important;
+        }
+
+        table.dataTable {
+            border-color: black!important;
+        }
     </style>
     @endsection
     <section class="section">
@@ -17,7 +25,7 @@
                 <div class="card-body">
 
                     <div class="container">
-                        <table id="example1" class="table table-bordered" style="width:100%">
+                        <table id="example1" class="table table-bordered border-1" style="width:100%">
                             <thead class="thead-dark">
                                 <tr class="text-center">
                                     <th>No</th>
@@ -100,7 +108,7 @@
                                                         Ubah
                                                     </a>
 
-                                                    <a href="#" class="btn btn-danger rounded btn-sm" data-toggle="modal" data-target="#modaldelete{{ $item->id }}" >
+                                                    <a href="#" class="btn btn-danger rounded btn-sm mr-2" data-toggle="modal" data-target="#modaldelete{{ $item->id }}" >
                                                         <i class="fas fa-trash"></i>
                                                         Hapus
                                                     </a>
