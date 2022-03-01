@@ -27,6 +27,6 @@ class DashboardDataMahasiswa extends Component
         $id = $mahasiswa_id;
         $findUser = Data::findOrFail($id);
         $findUser->forceDelete();
-        // return redirect()->route('data-mahasiswa')->with('status', 'Data telah dihapus!');
+        return redirect()->route('data-mahasiswa')->with('status', 'Data telah dihapus!');
     }
 }
