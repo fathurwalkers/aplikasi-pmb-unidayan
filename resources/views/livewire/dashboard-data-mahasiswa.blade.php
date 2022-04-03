@@ -119,7 +119,7 @@
 
                                     </tr>
 
-                                    {{-- MODAL --}}
+                                    {{-- MODAL DELETE --}}
                                     <div class="modal fade" id="modaldelete{{ $item->id }}" tabindex="1" role="dialog" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
@@ -135,7 +135,7 @@
                                                 {{-- <form action="" method="POST" enctype="multipart/form-data"> --}}
                                                     {{-- @csrf --}}
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn gray btn-outline-secondary" data-dismiss="modal">Cancel</button>
+                                                        <button type="button" class="btn gray btn-outline-secondary" 4data-dismiss="modal">Cancel</button>
                                                         <button wire:click="$emitSelf('hapus', {{ $item->id }})" class="btn btn-outline-danger" >
                                                             Delete
                                                         </button>
