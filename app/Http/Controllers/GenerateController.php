@@ -77,7 +77,7 @@ class GenerateController extends Controller
             $data_mahasiswa = new Data;
             $save_mahasiswa = $data_mahasiswa->create([
                 'data_foto' => $data_foto,
-                'data_kode' => strtolower(Str::random(10)),
+                'data_kode' => strtoupper(Str::random(10)),
                 'data_nama_lengkap' => $nama_lengkap,
                 'data_jenis_kelamin' => $random_jenis_kelamin,
                 'data_email' => $faker->email(),
