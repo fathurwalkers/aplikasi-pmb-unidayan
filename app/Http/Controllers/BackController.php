@@ -29,7 +29,7 @@ class BackController extends Controller
                 $status_histori = "LOGIN";
                 $status_histori = "User Login";
                 $histori_kode = "HSTR" . strtoupper(Str::random(10));
-                $message = "User dengan nama [" . $login->login_nama . "telah login, pada tanggal dan waktu ini : " . date('d/m/Y H:i:s', strtotime(now()));
+                $message = "User dengan nama [" . $login->login_nama . "] telah login, pada tanggal dan waktu ini : " . date('d/m/Y H:i:s', strtotime(now()));
 
                 $save_histori = $histori->create([
                     "histori_kode" => $histori_kode,
@@ -54,7 +54,7 @@ class BackController extends Controller
                 $status_histori = "LOGOUT";
                 $status_histori = "User Logout";
                 $histori_kode = "HSTR" . strtoupper(Str::random(10));
-                $message = "User dengan nama [" . $login->login_nama . "telah logout, pada tanggal dan waktu ini : " . date('d/m/Y H:i:s', strtotime(now()));
+                $message = "User dengan nama [" . $login->login_nama . "] telah logout, pada tanggal dan waktu ini : " . date('d/m/Y H:i:s', strtotime(now()));
 
                 $save_histori = $histori->create([
                     "histori_kode" => $histori_kode,
@@ -79,7 +79,7 @@ class BackController extends Controller
                 $status_histori = "UPDATE";
                 $status_histori = "User Update Data";
                 $histori_kode = "HSTR" . strtoupper(Str::random(10));
-                $message = "User dengan nama [" . $login->login_nama . "telah melakukan update data, pada tanggal dan waktu ini : " . date('d/m/Y H:i:s', strtotime(now()));
+                $message = "User dengan nama [" . $login->login_nama . "] telah melakukan update data, pada tanggal dan waktu ini : " . date('d/m/Y H:i:s', strtotime(now()));
 
                 $save_histori = $histori->create([
                     "histori_kode" => $histori_kode,
@@ -104,7 +104,7 @@ class BackController extends Controller
                 $status_histori = "DELETE";
                 $status_histori = "User Hapus Data";
                 $histori_kode = "HSTR" . strtoupper(Str::random(10));
-                $message = "User dengan nama [" . $login->login_nama . "telah melakukan penghapusan Data, pada tanggal dan waktu ini : " . date('d/m/Y H:i:s', strtotime(now()));
+                $message = "User dengan nama [" . $login->login_nama . "] telah melakukan penghapusan Data, pada tanggal dan waktu ini : " . date('d/m/Y H:i:s', strtotime(now()));
 
                 $save_histori = $histori->create([
                     "histori_kode" => $histori_kode,
@@ -129,7 +129,7 @@ class BackController extends Controller
                 $status_histori = "CREATE";
                 $status_histori = "User Tambah Data";
                 $histori_kode = "HSTR" . strtoupper(Str::random(10));
-                $message = "User dengan nama [" . $login->login_nama . "telah menambahkan Data, pada tanggal dan waktu ini : " . date('d/m/Y H:i:s', strtotime(now()));
+                $message = "User dengan nama [" . $login->login_nama . "] telah menambahkan Data, pada tanggal dan waktu ini : " . date('d/m/Y H:i:s', strtotime(now()));
 
                 $save_histori = $histori->create([
                     "histori_kode" => $histori_kode,
@@ -144,8 +144,6 @@ class BackController extends Controller
                 $save_histori->save();
                 break;
         }
-        $allhistori = Histori::all();
-        dd($allhistori);
     }
 
     public function index()
@@ -173,6 +171,7 @@ class BackController extends Controller
     public function logout(Request $request)
     {
         $users = session('data_login');
+        $this->push_histori('LOGOUT');
         $request->session()->forget(['data_login']);
         $request->session()->flush();
         return redirect()->route('login')->with('status', 'Anda telah logout!');
@@ -191,6 +190,7 @@ class BackController extends Controller
                 if ($data_login) {
                     if ($cek_password) {
                         $users = session(['data_login' => $data_login]);
+                        $this->push_histori('LOGIN');
                         return redirect()->route('dashboard')->with('status', 'Berhasil Login!');
                     }
                 }
@@ -200,6 +200,7 @@ class BackController extends Controller
                 if ($data_login) {
                     if ($cek_password) {
                         $users = session(['data_login' => $data_login]);
+                        $this->push_histori('LOGIN');
                         return redirect()->route('dashboard')->with('status', 'Berhasil Login!');
                     }
                 }
@@ -209,6 +210,7 @@ class BackController extends Controller
                 if ($data_login) {
                     if ($cek_password) {
                         $users = session(['data_login' => $data_login]);
+                        $this->push_histori('LOGIN');
                         return redirect()->route('dashboard')->with('status', 'Berhasil Login!');
                     }
                 }

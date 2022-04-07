@@ -19,7 +19,7 @@ Route::group(["prefix" => "/"], function () {
 });
 
 Route::group(["prefix" => "/dashboard", "middleware" => "ceklogin"], function () {
-    Route::get('/test-histori/{status}', [BackController::class, 'push_histori'])->name('test-histori');
+    // Route::get('/test-histori/{status}', [BackController::class, 'push_histori'])->name('test-histori');
     Route::get('/', DashboardIndex::class)->name('dashboard');
     Route::get('/profile', DashboardProfile::class)->name('profile');
 
