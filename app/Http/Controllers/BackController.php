@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Histori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -26,7 +25,6 @@ class BackController extends Controller
                 }
                 $histori = new Histori;
                 $login = Login::find(intval($session_users->id));
-                dd($login);
 
                 $status_histori = "LOGIN";
                 $status_histori = "User Login";
@@ -42,7 +40,7 @@ class BackController extends Controller
                     "updated_at" => now()
                 ]);
                 $save_histori->save();
-                $save_histori->login->associate($login->id);
+                $save_histori->login()->associate($login->id);
                 $save_histori->save();
                 break;
             case 'LOGOUT':
@@ -52,7 +50,6 @@ class BackController extends Controller
                 }
                 $histori = new Histori;
                 $login = Login::find(intval($session_users->id));
-                dd($login);
 
                 $status_histori = "LOGOUT";
                 $status_histori = "User Logout";
@@ -68,7 +65,7 @@ class BackController extends Controller
                     "updated_at" => now()
                 ]);
                 $save_histori->save();
-                $save_histori->login->associate($login->id);
+                $save_histori->login()->associate($login->id);
                 $save_histori->save();
                 break;
             case 'UPDATE':
@@ -78,7 +75,6 @@ class BackController extends Controller
                 }
                 $histori = new Histori;
                 $login = Login::find(intval($session_users->id));
-                dd($login);
 
                 $status_histori = "UPDATE";
                 $status_histori = "User Update Data";
@@ -94,7 +90,7 @@ class BackController extends Controller
                     "updated_at" => now()
                 ]);
                 $save_histori->save();
-                $save_histori->login->associate($login->id);
+                $save_histori->login()->associate($login->id);
                 $save_histori->save();
                 break;
             case 'DELETE':
@@ -104,7 +100,6 @@ class BackController extends Controller
                 }
                 $histori = new Histori;
                 $login = Login::find(intval($session_users->id));
-                dd($login);
 
                 $status_histori = "DELETE";
                 $status_histori = "User Hapus Data";
@@ -120,7 +115,7 @@ class BackController extends Controller
                     "updated_at" => now()
                 ]);
                 $save_histori->save();
-                $save_histori->login->associate($login->id);
+                $save_histori->login()->associate($login->id);
                 $save_histori->save();
                 break;
             case 'CREATE':
@@ -130,7 +125,6 @@ class BackController extends Controller
                 }
                 $histori = new Histori;
                 $login = Login::find(intval($session_users->id));
-                dd($login);
 
                 $status_histori = "CREATE";
                 $status_histori = "User Tambah Data";
@@ -146,7 +140,7 @@ class BackController extends Controller
                     "updated_at" => now()
                 ]);
                 $save_histori->save();
-                $save_histori->login->associate($login->id);
+                $save_histori->login()->associate($login->id);
                 $save_histori->save();
                 break;
         }
