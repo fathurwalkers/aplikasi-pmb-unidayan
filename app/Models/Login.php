@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Data;
+use App\Models\Histori;
 
 class Login extends Model
 {
@@ -17,5 +18,10 @@ class Login extends Model
     public function data()
     {
         return $this->belongsTo(Data::class);
+    }
+
+    public function histori()
+    {
+        return $this->hasMany(Histori::class);
     }
 }
