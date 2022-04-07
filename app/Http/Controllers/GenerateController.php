@@ -57,7 +57,7 @@ class GenerateController extends Controller
             $random_jurusan = Arr::random($arr_jurusan, 3);
             $random_sekolah = Arr::random($arr_sekolah);
             $random_jenis_kelamin = Arr::random($arr_jenis_kelamin);
-            $nama_ibu_kandung = $faker->firstNameFemale() . $faker->lastNameFemale();
+            $nama_ibu_kandung = $faker->firstNameFemale() . " " . $faker->lastNameFemale();
 
             switch ($random_jenis_kelamin) {
                 case 'L':
