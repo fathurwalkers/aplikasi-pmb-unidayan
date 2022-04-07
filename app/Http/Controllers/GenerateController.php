@@ -57,6 +57,7 @@ class GenerateController extends Controller
             $random_jurusan = Arr::random($arr_jurusan, 3);
             $random_sekolah = Arr::random($arr_sekolah);
             $random_jenis_kelamin = Arr::random($arr_jenis_kelamin);
+            $nama_ibu_kandung = $faker->firstNameFemale() . $faker->lastNameFemale();
 
             switch ($random_jenis_kelamin) {
                 case 'L':
@@ -76,14 +77,16 @@ class GenerateController extends Controller
             $data_mahasiswa = new Data;
             $save_mahasiswa = $data_mahasiswa->create([
                 'data_foto' => $data_foto,
+                'data_kode' => strtolower(Str::random(10)),
                 'data_nama_lengkap' => $nama_lengkap,
                 'data_jenis_kelamin' => $random_jenis_kelamin,
                 'data_email' => $faker->email(),
-                'data_telepon' => $faker->phoneNumber(),
+                'data_telepon' => intval($faker->phoneNumber()),
                 'data_tempat_lahir' => $faker->city(),
                 'data_tanggal_lahir' => $faker->date(),
                 'data_asal_sekolah' => $random_sekolah,
-                'data_tahun_lulus' => $faker->year(),
+                'data_nama_ibu_kandung' => $nama_ibu_kandung,
+                'data_tahun_lulus' => intval($faker->year()),
                 'data_plihan_jurusan1' => $random_jurusan[0],
                 'data_plihan_jurusan2' => $random_jurusan[1],
                 'data_plihan_jurusan3' => $random_jurusan[2],
