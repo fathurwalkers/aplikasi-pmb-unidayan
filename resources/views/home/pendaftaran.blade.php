@@ -13,3 +13,19 @@
     </section>
     <!-- End Hero -->
 @endsection
+
+@section('main-content')
+    <section id="counts" class="counts">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="count-box">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+@endsection

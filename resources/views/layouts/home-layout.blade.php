@@ -72,7 +72,11 @@
     </div>
   </header><!-- End Header -->
   @yield('header-content')
-  @yield('main-content')
+
+    <main id="main">
+        @yield('main-content')
+    </main>
+    <!-- End #main -->
 
   <!-- ======= Footer ======= -->
     <footer id="footer">
