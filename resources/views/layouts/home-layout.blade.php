@@ -75,7 +75,9 @@
   @yield('main-content')
 
   <!-- ======= Footer ======= -->
-  <x-home-footer />
+    <footer id="footer">
+        <x-home-footer />
+    </footer>
   <!-- End Footer -->
 
   <div id="preloader"></div>
