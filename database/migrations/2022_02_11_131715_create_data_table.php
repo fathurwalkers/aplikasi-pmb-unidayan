@@ -12,14 +12,16 @@ class CreateDataTable extends Migration
             $table->id();
 
             $table->string('data_foto')->nullable();
+            $table->string('data_kode')->nullable();
             $table->string('data_nama_lengkap')->nullable();
             $table->string('data_jenis_kelamin')->nullable();
-            $table->string('data_email')->nullable();
-            $table->string('data_telepon')->nullable();
+            $table->string('data_email')->nullable()->unique();
+            $table->integer('data_telepon')->nullable();
             $table->string('data_tempat_lahir')->nullable();
             $table->dateTime('data_tanggal_lahir')->nullable();
             $table->string('data_asal_sekolah')->nullable();
-            $table->string('data_tahun_lulus')->nullable();
+            $table->string('data_nama_ibu_kandung')->nullable();
+            $table->integer('data_tahun_lulus')->nullable();
             $table->string('data_plihan_jurusan1')->nullable();
             $table->string('data_plihan_jurusan2')->nullable();
             $table->string('data_plihan_jurusan3')->nullable();
