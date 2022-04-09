@@ -22,11 +22,17 @@ class CreateDataTable extends Migration
             $table->string('data_asal_sekolah')->nullable();
             $table->string('data_nama_ibu_kandung')->nullable();
             $table->integer('data_tahun_lulus')->nullable();
-            $table->string('data_plihan_jurusan1')->nullable();
-            $table->string('data_plihan_jurusan2')->nullable();
-            $table->string('data_plihan_jurusan3')->nullable();
             $table->string('data_status_pendaftaran')->nullable(); // DISETUJUI / BELUM DISETUJUI
             $table->string('data_status_pembayaran')->nullable(); // DIPROSES / SELESAI / DIBATALKAN
+
+            $table->unsignedBigInteger('data_pilihan_jurusan1')->nullable()->default(null);
+            $table->foreign('data_pilihan_jurusan1')->references('id')->on('prodi')->onDelete('cascade');
+
+            $table->unsignedBigInteger('data_pilihan_jurusan2')->nullable()->default(null);
+            $table->foreign('data_pilihan_jurusan2')->references('id')->on('prodi')->onDelete('cascade');
+
+            $table->unsignedBigInteger('data_pilihan_jurusan3')->nullable()->default(null);
+            $table->foreign('data_pilihan_jurusan3')->references('id')->on('prodi')->onDelete('cascade');
 
             $table->timestamps();
         });
