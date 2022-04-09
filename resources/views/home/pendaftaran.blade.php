@@ -27,19 +27,52 @@
                             <div class="row mb-2">
                                 <div class="col-sm-12 col-md-12 col-lg-12">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Email address</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                        <label for="data_jenis_kelamin">Jenis Kelamin</label>
+                                        <select class="form-control" id="data_jenis_kelamin" name="data_jenis_kelamin">
+                                            <option selected value="DEFAULT">Pilih jenis kelamin</option>
+                                            <option value="L">Laki-Laki</option>
+                                            <option value="P">Perempuan</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-2">
+                                <div class="col-sm-6 col-md-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label for="data_nama_lengkap">Nama Lengkap</label>
+                                        <input type="text" class="form-control" id="data_nama_lengkap" aria-describedby="emailHelp" placeholder="" name="data_nama_lengkap">
+                                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                      </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Email</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" name="data_email">
                                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                                       </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-sm-12 col-md-12 col-lg-12">
+                            <div class="row mb-2">
+                                <div class="col-sm-6 col-md-6 col-lg-6">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Email address</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                                      </div>
+                                        <label for="data_jenis_kelamin">Jenis Kelamin</label>
+                                        <select class="form-control" id="data_jenis_kelamin" name="data_jenis_kelamin">
+                                            <option selected value="DEFAULT">Pilih jenis kelamin</option>
+                                            <option value="L">Laki-Laki</option>
+                                            <option value="P">Perempuan</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label for="data_jenis_kelamin">Jenis Kelamin</label>
+                                        <select class="form-control" id="data_jenis_kelamin" name="data_jenis_kelamin">
+                                            <option selected value="DEFAULT">Pilih jenis kelamin</option>
+                                            <option value="L">Laki-Laki</option>
+                                            <option value="P">Perempuan</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
 
