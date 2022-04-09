@@ -8,14 +8,21 @@ class CreateProdisTable extends Migration
 {
     public function up()
     {
-        Schema::create('prodis', function (Blueprint $table) {
+        Schema::create('prodi', function (Blueprint $table) {
             $table->id();
+
+            $table->string('prodi_kode')->nullable();
+            $table->string('prodi_nama')->nullable();
+            $table->string('prodi_fakultas')->nullable();
+            $table->string('prodi_foto_pimpinan')->nullable();
+            $table->string('prodi_nama_pimpinan')->nullable();
+
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('prodis');
+        Schema::dropIfExists('prodi');
     }
 }

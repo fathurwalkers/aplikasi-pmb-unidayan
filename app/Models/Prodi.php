@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Data;
 
 class Prodi extends Model
 {
@@ -12,4 +13,9 @@ class Prodi extends Model
     protected $table = 'prodi';
     protected $guarded = [];
     protected $primaryKey = 'id';
+
+    public function data()
+    {
+        return $this->hasMany(Data::class);
+    }
 }

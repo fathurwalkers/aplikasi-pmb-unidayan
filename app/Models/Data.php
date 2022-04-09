@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Login;
+use App\Models\Prodi;
 
 class Data extends Model
 {
@@ -17,6 +18,11 @@ class Data extends Model
     public function login()
     {
         return $this->hasMany(Login::class);
+    }
+
+    public function prodi()
+    {
+        return $this->belongsTo(Prodi::class);
     }
 
 }
