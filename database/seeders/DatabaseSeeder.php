@@ -96,7 +96,7 @@ class DatabaseSeeder extends Seeder
                 "prodi_foto_pimpinan" => "home-default-profile.jpg",
                 "prodi_nama_pimpinan" => $item[0],
                 "created_at" => now(),
-                "update_at" => now()
+                "updated_at" => now()
             ]);
             $save_prodi->save();
         }
