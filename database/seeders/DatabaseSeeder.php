@@ -81,7 +81,7 @@ class DatabaseSeeder extends Seeder
         ];
         $count_prodi = count($array_prodi_nama);
         for ($i=0; $i < $count_prodi; $i++) {
-            $prodi_kode = "PRODI" . Str::random(5);
+            $prodi_kode = "PRODI" . strtoupper(Str::random(5));
             $save_prodi = $prodi->create([
                 "prodi_kode" => $prodi_kode,
                 "prodi_nama" => $array_prodi_nama[$i],

@@ -17,6 +17,7 @@ Route::post('/post-register', [BackController::class, 'postregister'])->name('po
 Route::group(["prefix" => "/"], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/pendaftaran', [HomeController::class, 'pendaftaran'])->name('home-pendaftaran');
+    Route::post('/pendaftaran/post', [HomeController::class, 'post_pendaftaran'])->name('post-pendaftaran');
 });
 
 Route::group(["prefix" => "/dashboard", "middleware" => "ceklogin"], function () {

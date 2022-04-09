@@ -10,6 +10,7 @@ use Faker\Factory as Faker;
 use Illuminate\Support\Arr;
 use App\Models\Login;
 use App\Models\Data;
+use App\Models\Prodi;
 
 class GenerateController extends Controller
 {
@@ -23,20 +24,6 @@ class GenerateController extends Controller
             $arr_status_pendaftaran = ["DISETUJUI", "BELUM DISETUJUI"];
             $arr_status_pembayaran = ["DIPROSES", "SELESAI", "DIBATALKAN"];
             $arr_number  = [1, 2, 3];
-            $arr_jurusan = [
-                "Teknik Informatika",
-                "Teknik Sipil",
-                "Teknik Pertambangan",
-                "Teknik Mesin",
-                "Sastra Inggris",
-                "Sastra Indonesia",
-                "Perikanan",
-                "Hukum",
-                "Ekonomi",
-                "Akuntansi",
-                "Administrasi Negara",
-                "Sistem Informasi"
-            ];
             $arr_sekolah = [
                 "SMA 1 Baubau",
                 "SMA 2 Baubau",
@@ -50,11 +37,21 @@ class GenerateController extends Controller
                 "MAN 1 Baubau",
                 "MAN 2 Baubau"
             ];
+            $arr_kampus_pilihan = [
+                'KAMPUS PASARWAJO',
+                'KAMPUS PALAGIMATA'
+            ];
+            $prodi1 = Prodi::all()->toArray();
+            $random_pilihan_jurusan1 = Arr::random($prodi1);
+            $prodi2 = Prodi::whereNotIn('id', [$random_pilihan_jurusan1["id"]])->get()->toArray();
+            $random_pilihan_jurusan2 = Arr::random($prodi2);
+            $prodi3 = Prodi::whereNotIn('id', [$random_pilihan_jurusan1["id"], $random_pilihan_jurusan2["id"]])->get()->toArray();
+            $random_pilihan_jurusan3 = Arr::random($prodi3);
 
+            $random_kampus_pilihan = Arr::random($arr_kampus_pilihan);
             $random_status_pendaftaran = Arr::random($arr_status_pendaftaran);
             $random_status_pembayaran = Arr::random($arr_status_pembayaran);
             $random_number = Arr::random($arr_number);
-            $random_jurusan = Arr::random($arr_jurusan, 3);
             $random_sekolah = Arr::random($arr_sekolah);
             $random_jenis_kelamin = Arr::random($arr_jenis_kelamin);
             $nama_ibu_kandung = $faker->firstNameFemale() . " " . $faker->lastNameFemale();
@@ -87,11 +84,12 @@ class GenerateController extends Controller
                 'data_asal_sekolah' => $random_sekolah,
                 'data_nama_ibu_kandung' => $nama_ibu_kandung,
                 'data_tahun_lulus' => intval($faker->year()),
-                'data_plihan_jurusan1' => $random_jurusan[0],
-                'data_plihan_jurusan2' => $random_jurusan[1],
-                'data_plihan_jurusan3' => $random_jurusan[2],
                 'data_status_pendaftaran' => $random_status_pendaftaran,
                 'data_status_pembayaran' => $random_status_pembayaran,
+                'data_kampus_pilihan' => $random_kampus_pilihan,
+                'data_pilihan_jurusan1' => intval($random_pilihan_jurusan1["id"]),
+                'data_pilihan_jurusan2' => intval($random_pilihan_jurusan2["id"]),
+                'data_pilihan_jurusan3' => intval($random_pilihan_jurusan3["id"]),
                 'created_at' => now(),
                 'updated_at' => now()
             ]);

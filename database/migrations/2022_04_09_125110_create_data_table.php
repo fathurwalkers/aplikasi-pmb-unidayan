@@ -24,6 +24,7 @@ class CreateDataTable extends Migration
             $table->integer('data_tahun_lulus')->nullable();
             $table->string('data_status_pendaftaran')->nullable(); // DISETUJUI / BELUM DISETUJUI
             $table->string('data_status_pembayaran')->nullable(); // DIPROSES / SELESAI / DIBATALKAN
+            $table->string('data_kampus_pilihan')->nullable();
 
             $table->unsignedBigInteger('data_pilihan_jurusan1')->nullable()->default(null);
             $table->foreign('data_pilihan_jurusan1')->references('id')->on('prodi')->onDelete('cascade');
