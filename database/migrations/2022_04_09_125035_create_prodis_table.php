@@ -13,7 +13,7 @@ class CreateProdisTable extends Migration
 
             $table->string('prodi_kode')->nullable();
             $table->string('prodi_nama')->nullable();
-            $table->string('prodi_fakultas')->nullable();
+            $table->string('prodi_tingkatan')->nullable(); // S1 - S2
             $table->string('prodi_foto_pimpinan')->nullable();
             $table->string('prodi_nama_pimpinan')->nullable();
 
