@@ -39,6 +39,26 @@ class DatabaseSeeder extends Seeder
             "Dr. La Didi, S.I.P., MAP",
             "Dr. Juamdan Zamha Zamihu, S.S., M.Hum."
         ];
+        $array_gambar_prodi = [
+            "Drs. Ilham, M.Si.jpg", // sudah
+            "Hartini Amin, S.Sos., M.Si.jpg", // sudah
+            "Haeruddin.jpg",
+            "La Sariade.jpg",
+            "La Eru Ugi.jpg",
+            "Rizal Arisman.jpg",
+            "Irawan.jpg",
+            "Said Saleh Salihi.jpg",
+            "home-default-profile.jpg",  //"Sumitro, S.Pi., M.Si.",
+            "home-default-profile.jpg",  //"Nasrin, S.H., M.H.",
+            "home-default-profile.jpg",  //"La Ode Asman Muriman, S.T., M.T.",
+            "home-default-profile.jpg",  //"Ahmad Gasruddin, S.T., M.T.",
+            "home-default-profile.jpg",  //"Ery Muchyar Hasiri, S.Kom., M.T.",
+            "home-default-profile.jpg",  //"Sarman, S.T., M.T.",
+            "La Ode Muh. Taufiq, SKM., M.Kes.jpg",
+            "Badaria.jpg",
+            "Dr. La Didi, S.I.P., MAP.jpg", // sudah
+            "Dr. Juamdan Zamha Zamihu, S.S., M.Hum."
+        ];
         $array_prodi_nama = [
             "Ilmu Administrasi Negara",
             "Sosiologi",
