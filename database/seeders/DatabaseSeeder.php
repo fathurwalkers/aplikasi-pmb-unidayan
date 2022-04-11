@@ -57,7 +57,7 @@ class DatabaseSeeder extends Seeder
             "La Ode Muh. Taufiq, SKM., M.Kes.jpg",
             "Badaria.jpg",
             "Dr. La Didi, S.I.P., MAP.jpg", // sudah
-            "Dr. Juamdan Zamha Zamihu, S.S., M.Hum."
+            "home-default-profile.jpg", // "Dr. Juamdan Zamha Zamihu, S.S., M.Hum."
         ];
         $array_prodi_nama = [
             "Ilmu Administrasi Negara",
@@ -106,7 +106,7 @@ class DatabaseSeeder extends Seeder
                 "prodi_kode" => $prodi_kode,
                 "prodi_nama" => $array_prodi_nama[$i],
                 "prodi_tingkatan" => $array_prodi_tingkatan[$i],
-                "prodi_foto_pimpinan" => "home-default-profile.jpg",
+                "prodi_foto_pimpinan" => $array_gambar_prodi[$i],
                 "prodi_nama_pimpinan" => $array_prodi_pimpinan[$i],
                 "created_at" => now(),
                 "updated_at" => now()
