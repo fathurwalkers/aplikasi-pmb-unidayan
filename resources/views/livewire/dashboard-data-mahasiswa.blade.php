@@ -13,6 +13,10 @@
         table.dataTable {
             border-color: black!important;
         }
+
+        .modal-title {
+            font-size: 20px!important;
+        }
     </style>
     @endsection
     <section class="section">
@@ -98,17 +102,17 @@
                                             <div class="row">
                                                 <div class="col-sm-12 col-md-12 col-lg-12 d-flex mx-auto justify-content-center">
 
-                                                    <a class="btn btn-sm btn-info mr-1 rounded" href="#">
+                                                    <a class="btn btn-sm btn-info mr-1 rounded" href="#" data-toggle="modal" data-target="#modallihat{{ $item->id }}">
                                                         <i class="fas fa-info-circle"></i>
                                                         Lihat
                                                     </a>
 
-                                                    <a class="btn btn-sm btn-primary mr-1 rounded" href="#">
+                                                    {{-- <a class="btn btn-sm btn-primary mr-1 rounded" href="#">
                                                         <i class="fas fa-cog"></i>
                                                         Ubah
-                                                    </a>
+                                                    </a> --}}
 
-                                                    <a href="#" class="btn btn-danger rounded btn-sm mr-2" data-toggle="modal" data-target="#modaldelete{{ $item->id }}" >
+                                                    <a href="#" class="btn btn-danger rounded btn-sm mr-2" data-toggle="modal" data-target="#modaldelete{{ $item->id }}">
                                                         <i class="fas fa-trash"></i>
                                                         Hapus
                                                     </a>
@@ -135,7 +139,7 @@
                                                 {{-- <form action="" method="POST" enctype="multipart/form-data"> --}}
                                                     {{-- @csrf --}}
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn gray btn-outline-secondary" 4data-dismiss="modal">Cancel</button>
+                                                        <button type="button" class="btn gray btn-outline-secondary" data-dismiss="modal">Cancel</button>
                                                         <button wire:click="$emitSelf('hapus', {{ $item->id }})" class="btn btn-outline-danger" >
                                                             Delete
                                                         </button>
@@ -149,6 +153,37 @@
                                         </div>
                                     </div>
                                     {{-- End MODAL --}}
+
+                                    {{-- MODAL LIHAT  --}}
+                                    <div class="modal fade" id="modallihat{{ $item->id }}" tabindex="1" role="dialog" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">Data Mahasiswa {{ $item->data_nama_lengkap }}</h4>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+
+                                                <div class="modal-body">Apakah anda yakin ingin menghapus item ini? </div>
+                                                {{-- <form action="" method="POST" enctype="multipart/form-data"> --}}
+                                                    {{-- @csrf --}}
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn gray btn-outline-secondary" data-dismiss="modal">Cancel</button>
+                                                        <button wire:click="$emitSelf('hapus', {{ $item->id }})" class="btn btn-outline-danger" >
+                                                            Delete
+                                                        </button>
+                                                        {{-- <button wire:click="hapusData({{ $item->id }})" class="btn btn-outline-danger" >
+                                                            Delete
+                                                        </button> --}}
+                                                    </div>
+                                                {{-- </form> --}}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- END MODAL LIHAT  --}}
 
                                 @endforeach
 

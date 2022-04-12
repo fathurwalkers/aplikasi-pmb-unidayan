@@ -185,7 +185,7 @@
     </section><!-- End Departments Section --> --}}
     <!-- ======= Doctors Section ======= -->
     <section id="doctors" class="doctors">
-        <x-home-kaprodi />
+        <x-home-kaprodi :prodi='$prodi' />
     </section>
     <!-- End Doctors Section -->
     <!-- ======= Frequently Asked Questions Section ======= -->
@@ -199,9 +199,9 @@
     </section>
     <!-- End Testimonials Section -->
     <!-- ======= Gallery Section ======= -->
-    <section id="gallery" class="gallery">
+    {{-- <section id="gallery" class="gallery">
     <x-home-gallery />
-    </section>
+    </section> --}}
     <!-- End Gallery Section -->
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">

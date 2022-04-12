@@ -16,7 +16,10 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('home.index');
+        $prodi = Prodi::all();
+        return view('home.index', [
+            'prodi' => $prodi
+        ]);
     }
 
     public function pendaftaran()
@@ -29,11 +32,78 @@ class HomeController extends Controller
 
     public function post_pendaftaran(Request $request)
     {
-        $pilihan_jurusan1 = Prodi::find(intval($request->data_pilihan_jurusan1));
-        $pilihan_jurusan2 = Prodi::find(intval($request->data_pilihan_jurusan2));
-        $pilihan_jurusan3 = Prodi::find(intval($request->data_pilihan_jurusan3));
+        $validate_data                  = $request->validate([
+            // "data_foto"                 => 'required',
+            "data_nama_lengkap"         => 'required',
+            "data_jenis_kelamin"        => 'required|filled',
+            "data_email"                => 'required',
+            "data_telepon"              => 'required',
+            "data_tempat_lahir"         => 'required',
+            "data_tanggal_lahir"        => 'required',
+            "data_asal_sekolah"         => 'required',
+            "data_nama_ibu_kandung"     => 'required',
+            "data_tahun_lulus"          => 'required',
+            "data_kampus_pilihan"       => 'required|filled',
+            "data_pilihan_jurusan1"     => 'required|filled',
+            "data_pilihan_jurusan2"     => 'required|filled',
+            "data_pilihan_jurusan3"     => 'required|filled',
+        ]);
 
-        $data = new Data;
-        dd($request);
+        $pilihan_jurusan1               = Prodi::find(intval($validate_data["data_pilihan_jurusan1"]));
+        $pilihan_jurusan2               = Prodi::find(intval($validate_data["data_pilihan_jurusan2"]));
+        $pilihan_jurusan3               = Prodi::find(intval($validate_data["data_pilihan_jurusan3"]));
+
+        $data_mahasiswa                 = new Data;
+        $save_mahasiswa                 = $data_mahasiswa->create([
+            'data_foto'                 => null,
+            'data_kode'                 => strtoupper(Str::random(10)),
+            'data_nama_lengkap'         => $validate_data["data_nama_lengkap"],
+            'data_jenis_kelamin'        => $validate_data["data_jenis_kelamin"],
+            'data_email'                => $validate_data["data_email"],
+            'data_telepon'              => $validate_data["data_telepon"],
+            'data_tempat_lahir'         => $validate_data["data_tempat_lahir"],
+            'data_tanggal_lahir'        => date($validate_data["data_tanggal_lahir"]),
+            'data_asal_sekolah'         => $validate_data["data_asal_sekolah"],
+            'data_nama_ibu_kandung'     => $validate_data["data_nama_ibu_kandung"],
+            'data_tahun_lulus'          => $validate_data["data_tahun_lulus"],
+            'data_status_pendaftaran'   => "BELUM DISETUJUI",
+            'data_status_pembayaran'    => "DIPROSES",
+            'data_kampus_pilihan'       => $validate_data["data_kampus_pilihan"],
+            'data_pilihan_jurusan1'     => $pilihan_jurusan1->id,
+            'data_pilihan_jurusan2'     => $pilihan_jurusan2->id,
+            'data_pilihan_jurusan3'     => $pilihan_jurusan3->id,
+            'created_at'                => now(),
+            'updated_at'                => now()
+        ]);
+        $save_mahasiswa->save();
+        // LOGIN
+        $login_model                    = new Login;
+        $password                       = '12345';
+        $hashPassword                   = Hash::make($password, [
+            'rounds' => 12,
+        ]);
+        $token_raw                      = Str::random(16);
+        $token                          = Hash::make($token_raw, [
+            'rounds' => 12,
+        ]);
+        $level                          = "pendaftar";
+        $login_status                   = "verified";
+        $login_data                     = $login_model->create([
+            'login_nama'                => $save_mahasiswa->data_nama_lengkap,
+            'login_username'            => 'pendaftar' . strtolower(Str::random(10)),
+            'login_password'            => $hashPassword,
+            'login_email'               => $save_mahasiswa->data_email,
+            'login_telepon'             => $save_mahasiswa->data_telepon,
+            'login_token'               => $token,
+            'login_level'               => $level,
+            'login_status'              => $login_status,
+            'created_at'                => now(),
+            'updated_at'                => now()
+        ]);
+        $login_data->save();
+        $login_data->data()->associate($save_mahasiswa->id);
+        $login_data->save();
+
+        return redirect()->route('home')->with('status', 'Pendaftaran berhasil! Silahkan login kedalam dashboard untuk melanjutkan proses pendaftaran.');
     }
 }
