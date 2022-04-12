@@ -17,6 +17,10 @@
         .modal-title {
             font-size: 20px!important;
         }
+
+        .fix-text {
+            color: black!important;
+        }
     </style>
     @endsection
     <section class="section">
@@ -160,20 +164,60 @@
                                             <div class="modal-content">
 
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title">Data Mahasiswa {{ $item->data_nama_lengkap }}</h4>
+                                                    <h4 class="modal-title fix-text">Data Mahasiswa {{ $item->data_nama_lengkap }}</h4>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
 
-                                                <div class="modal-body">Apakah anda yakin ingin menghapus item ini? </div>
+                                                <div class="modal-body">
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-sm-4 col-md-4 col-lg-4">
+                                                                <p class="fix-text">
+                                                                    <b> Data Diri </b> <br>
+                                                                    Nama Lengkap <br>
+                                                                    Jenis Kelamin <br>
+                                                                    Email <br>
+                                                                    No. HP / Telepon <br>
+                                                                    Tempat Lahir <br>
+                                                                    Tanggal Lahir <br>
+                                                                    <br />
+                                                                    <b> Informasi Sekolah </b><br>
+                                                                    Asal Sekolah <br>
+                                                                    Tahun Lulus <br>
+                                                                    <br />
+                                                                    <b> Informasi Akun </b> <br>
+                                                                    Username <br>
+                                                                    Password <br>
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-sm-8 col-md-8 col-lg-8">
+                                                                <p class="fix-text">
+                                                                    <br />
+                                                                    Nama Lengkap <br>
+                                                                    Jenis Kelamin <br>
+                                                                    Email <br>
+                                                                    No. HP / Telepon <br>
+                                                                    Tempat Lahir <br>
+                                                                    Tanggal Lahir <br>
+                                                                    <br />
+                                                                    <br />
+                                                                    Asal Sekolah <br>
+                                                                    Tahun Lulus <br>
+                                                                    <br />
+                                                                    <br />
+                                                                    Username <br>
+                                                                    Password <br>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 {{-- <form action="" method="POST" enctype="multipart/form-data"> --}}
                                                     {{-- @csrf --}}
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn gray btn-outline-secondary" data-dismiss="modal">Cancel</button>
-                                                        <button wire:click="$emitSelf('hapus', {{ $item->id }})" class="btn btn-outline-danger" >
-                                                            Delete
-                                                        </button>
+                                                        <button type="button" class="btn gray btn-outline-secondary" data-dismiss="modal">Tutup</button>
                                                         {{-- <button wire:click="hapusData({{ $item->id }})" class="btn btn-outline-danger" >
                                                             Delete
                                                         </button> --}}

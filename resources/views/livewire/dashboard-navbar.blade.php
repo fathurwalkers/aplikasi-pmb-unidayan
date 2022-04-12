@@ -13,15 +13,15 @@
             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Pendaftaran</span></a>
             <ul class="dropdown-menu">
                 <li><a class="nav-link" href="{{ route('data-mahasiswa') }}">Data Mahasiswa</a></li>
-                <li><a class="nav-link" href="layout-default.html">Data Akun Mahasiswa</a></li>
-                <li><a class="nav-link" href="layout-transparent.html">Laporan</a></li>
+                <li><a class="nav-link" href="#">Data Akun Mahasiswa</a></li>
+                <li><a class="nav-link" href="#">Laporan</a></li>
             </ul>
         </li>
         <li class="nav-item dropdown">
             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Informasi</span></a>
             <ul class="dropdown-menu">
-                <li><a class="nav-link" href="layout-default.html">Daftar Informasi</a></li>
-                <li><a class="nav-link" href="layout-transparent.html">Laporan</a></li>
+                <li><a class="nav-link" href="#">Daftar Informasi</a></li>
+                <li><a class="nav-link" href="#">Laporan</a></li>
             </ul>
         </li>
         <li><a class="nav-link" href="credits.html"><i class="fas fa-pencil-ruler"></i> <span>Pengaturan</span></a></li>
