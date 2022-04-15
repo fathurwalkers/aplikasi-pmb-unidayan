@@ -32,6 +32,7 @@ class HomeController extends Controller
 
     public function post_pendaftaran(Request $request)
     {
+        // dd($request->data_pilihan_jurusan3);
         $validate_data                  = $request->validate(
             [
                 "data_foto"                 => 'required',
@@ -50,20 +51,20 @@ class HomeController extends Controller
                 "data_pilihan_jurusan3"     => 'required|filled',
             ],
             [
-                "data_foto.required"                 => 'required',
-                "data_nama_lengkap.required"         => 'Nama Lengkap tidak boleh kosong.',
-                "data_jenis_kelamin.required"        => 'Jenis Kelamin tidak boleh kosong',
-                "data_email.required"                => 'Email tidak boleh kosong.',
-                "data_telepon.required"              => 'No. HP / Telepon tidak boleh kosong.',
-                "data_tempat_lahir.required"         => 'Tempat lahir tidak boleh kosong.',
-                "data_tanggal_lahir.required"        => 'Tanggal Lahir tidak boleh kosong.',
-                "data_asal_sekolah.required"         => 'Asal Sekolah tidak boleh kosong.',
-                "data_nama_ibu_kandung.required"     => 'Nama Ibu tidak boleh kosong.',
-                "data_tahun_lulus.required"          => 'Tahun Lulus tidak boleh kosong.',
-                "data_kampus_pilihan.required"       => 'Kampus Pilihan tidak boleh kosong',
-                "data_pilihan_jurusan1.required"     => 'Pilihan jurusan pertama tidak boleh kosong',
-                "data_pilihan_jurusan2.required"     => 'Pilihan jurusan kedua tidak boleh kosong',
-                "data_pilihan_jurusan3.required"     => 'Pilihan jurusan ketiga tidak boleh kosong',
+                "data_foto.required"                        => 'Foto tidak boleh kosong.',
+                "data_nama_lengkap.required"                => 'Nama Lengkap tidak boleh kosong.',
+                "data_jenis_kelamin.required|filled"        => 'Jenis Kelamin tidak boleh kosong',
+                "data_email.required"                       => 'Email tidak boleh kosong.',
+                "data_telepon.required"                     => 'No. HP / Telepon tidak boleh kosong.',
+                "data_tempat_lahir.required"                => 'Tempat lahir tidak boleh kosong.',
+                "data_tanggal_lahir.required"               => 'Tanggal Lahir tidak boleh kosong.',
+                "data_asal_sekolah.required"                => 'Asal Sekolah tidak boleh kosong.',
+                "data_nama_ibu_kandung.required"            => 'Nama Ibu tidak boleh kosong.',
+                "data_tahun_lulus.required"                 => 'Tahun Lulus tidak boleh kosong.',
+                "data_kampus_pilihan.required|filled"       => 'Kampus Pilihan tidak boleh kosong',
+                "data_pilihan_jurusan1.required|filled"     => 'Pilihan jurusan pertama tidak boleh kosong',
+                "data_pilihan_jurusan2.required|filled"     => 'Pilihan jurusan kedua tidak boleh kosong',
+                "data_pilihan_jurusan3.required|filled"     => 'Pilihan jurusan ketiga tidak boleh kosong',
             ]
         );
 
