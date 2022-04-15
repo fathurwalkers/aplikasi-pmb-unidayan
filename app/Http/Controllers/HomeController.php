@@ -32,22 +32,54 @@ class HomeController extends Controller
 
     public function post_pendaftaran(Request $request)
     {
-        $validate_data                  = $request->validate([
-            // "data_foto"                 => 'required',
-            "data_nama_lengkap"         => 'required',
-            "data_jenis_kelamin"        => 'required|filled',
-            "data_email"                => 'required',
-            "data_telepon"              => 'required',
-            "data_tempat_lahir"         => 'required',
-            "data_tanggal_lahir"        => 'required',
-            "data_asal_sekolah"         => 'required',
-            "data_nama_ibu_kandung"     => 'required',
-            "data_tahun_lulus"          => 'required',
-            "data_kampus_pilihan"       => 'required|filled',
-            "data_pilihan_jurusan1"     => 'required|filled',
-            "data_pilihan_jurusan2"     => 'required|filled',
-            "data_pilihan_jurusan3"     => 'required|filled',
-        ]);
+        $validate_data                  = $request->validate(
+            [
+                "data_foto"                 => 'required',
+                "data_nama_lengkap"         => 'required',
+                "data_jenis_kelamin"        => 'required|filled',
+                "data_email"                => 'required',
+                "data_telepon"              => 'required',
+                "data_tempat_lahir"         => 'required',
+                "data_tanggal_lahir"        => 'required',
+                "data_asal_sekolah"         => 'required',
+                "data_nama_ibu_kandung"     => 'required',
+                "data_tahun_lulus"          => 'required',
+                "data_kampus_pilihan"       => 'required|filled',
+                "data_pilihan_jurusan1"     => 'required|filled',
+                "data_pilihan_jurusan2"     => 'required|filled',
+                "data_pilihan_jurusan3"     => 'required|filled',
+            ],
+            [
+                "data_foto.required"                 => 'required',
+                "data_nama_lengkap.required"         => 'Nama Lengkap tidak boleh kosong.',
+                "data_jenis_kelamin.required"        => 'Jenis Kelamin tidak boleh kosong',
+                "data_email.required"                => 'Email tidak boleh kosong.',
+                "data_telepon.required"              => 'No. HP / Telepon tidak boleh kosong.',
+                "data_tempat_lahir.required"         => 'Tempat lahir tidak boleh kosong.',
+                "data_tanggal_lahir.required"        => 'Tanggal Lahir tidak boleh kosong.',
+                "data_asal_sekolah.required"         => 'Asal Sekolah tidak boleh kosong.',
+                "data_nama_ibu_kandung.required"     => 'Nama Ibu tidak boleh kosong.',
+                "data_tahun_lulus.required"          => 'Tahun Lulus tidak boleh kosong.',
+                "data_kampus_pilihan.required"       => 'Kampus Pilihan tidak boleh kosong',
+                "data_pilihan_jurusan1.required"     => 'Pilihan jurusan pertama tidak boleh kosong',
+                "data_pilihan_jurusan2.required"     => 'Pilihan jurusan kedua tidak boleh kosong',
+                "data_pilihan_jurusan3.required"     => 'Pilihan jurusan ketiga tidak boleh kosong',
+            ]
+        );
+
+        $gambar_cek = $request->file('data_foto');
+        if (!$gambar_cek) {
+            $gambar = null;
+        } else {
+            $randomNamaGambar = Str::random(10) . '.jpg';
+            $gambar = $request->file('data_foto')->move(public_path('default-img'), strtolower($randomNamaGambar));
+        }
+
+        if ($gambar == null) {
+            $gambar = null;
+        } else {
+            $gambar = $gambar->getFileName();
+        }
 
         $pilihan_jurusan1               = Prodi::find(intval($validate_data["data_pilihan_jurusan1"]));
         $pilihan_jurusan2               = Prodi::find(intval($validate_data["data_pilihan_jurusan2"]));
@@ -55,7 +87,7 @@ class HomeController extends Controller
 
         $data_mahasiswa                 = new Data;
         $save_mahasiswa                 = $data_mahasiswa->create([
-            'data_foto'                 => null,
+            'data_foto'                 => $gambar,
             'data_kode'                 => strtoupper(Str::random(10)),
             'data_nama_lengkap'         => $validate_data["data_nama_lengkap"],
             'data_jenis_kelamin'        => $validate_data["data_jenis_kelamin"],

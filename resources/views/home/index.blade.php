@@ -25,9 +25,9 @@
     <x-home-counts />
     <!-- End Counts Section -->
     <!-- ======= Services Section ======= -->
-    <section id="services" class="services">
-        <x-home-fakultas />
-    </section>
+    {{-- <section id="services" class="services">
+        <x-home-fakultas :prodi='$prodi' />
+    </section> --}}
     <!-- End Services Section -->
     <!-- ======= Appointment Section ======= -->
     {{-- <section id="appointment" class="appointment section-bg">
@@ -199,9 +199,9 @@
     </section>
     <!-- End Testimonials Section -->
     <!-- ======= Gallery Section ======= -->
-    {{-- <section id="gallery" class="gallery">
+    <section id="gallery" class="gallery">
     <x-home-gallery />
-    </section> --}}
+    </section>
     <!-- End Gallery Section -->
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
