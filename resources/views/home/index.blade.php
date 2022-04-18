@@ -6,9 +6,18 @@
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex align-items-center">
         <div class="container">
-        <h1>Website Pendaftaraan Mahasiswa Baru</h1>
-        <h2>Universitas Dayanu Ikhsanuddin</h2>
-        <a href="{{ route('home-pendaftaran') }}" class="btn-get-started scrollto">Mulai Pendaftaran</a>
+            <h1>Website Pendaftaraan Mahasiswa Baru</h1>
+            <h2>Universitas Dayanu Ikhsanuddin</h2>
+            <a href="{{ route('home-pendaftaran') }}" class="btn-get-started scrollto">Mulai Pendaftaran</a>
+            <div class="row my-3">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    @if (session('status'))
+                        <div class="alert alert-info">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                </div>
+            </div>
         </div>
     </section>
     <!-- End Hero -->

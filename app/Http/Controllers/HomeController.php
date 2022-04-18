@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -39,7 +41,6 @@ class HomeController extends Controller
     {
         $id_user = $id;
         $pengguna = Login::find($id_user);
-        dd($pengguna);
         $mail_username  = "siakadtk123@gmail.com";
         $mail_password  = "Fathur160199Seven";
         $mail_send  = $pengguna->login_email;
@@ -70,12 +71,12 @@ class HomeController extends Controller
             $bodyverfikasi .= "'>";
             $bodyverfikasi .= "VERIFIKASI";
             $bodyverfikasi .= "</a>";
-            dd($bodyverfikasi);
+            $bodyverfikasi .= "<br />";
 
             $mail->Body = $bodyverfikasi;
 
             $mail->send();
-            return redirect()->route('home')->with('status', "Verifikasi Akun telah berhasil. Silahkan login ke Dashboard untuk melihat status pendaftaran anda.");
+            return redirect()->route('home')->with('status', "Pendaftaran Akun telah berhasil. Silahkan Login ke Dashboard dan melakukan pengecekan di Email anda untuk melakukan Verifikasi Akun agar dapat melanjutkan proses pendaftaran.");
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
@@ -171,7 +172,7 @@ class HomeController extends Controller
             'rounds' => 12,
         ]);
         $level                          = "pendaftar";
-        $login_status                   = "verified";
+        $login_status                   = "unverified";
         $login_data                     = $login_model->create([
             'login_nama'                => $save_mahasiswa->data_nama_lengkap,
             'login_username'            => 'pendaftar' . strtolower(Str::random(10)),
@@ -187,7 +188,8 @@ class HomeController extends Controller
         $login_data->save();
         $login_data->data()->associate($save_mahasiswa->id);
         $login_data->save();
-        $this->send_email($login_data->id);
-        return redirect()->route('home')->with('status', 'Pendaftaran berhasil! Silahkan login kedalam dashboard untuk melanjutkan proses pendaftaran.');
+        // $this->send_email($login_data->id);
+        // return redirect()->route('home')->with('status', 'Pendaftaran berhasil! Silahkan login kedalam dashboard untuk melanjutkan proses pendaftaran.');
+        return redirect()->route('home-send-email', $login_data->id);
     }
 }
