@@ -303,12 +303,7 @@ class BackController extends Controller
             'updated_at' => now()
         ]);
         $save_login->save();
-        $this->send_email($save_login->login_token);
         return redirect()->route('login')->with('status', 'Berhasil melakukan registrasi!');
     }
 
-    public function verifikasi_akun($token)
-    {
-        dd($token);
-    }
 }

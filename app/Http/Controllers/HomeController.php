@@ -30,6 +30,57 @@ class HomeController extends Controller
         ]);
     }
 
+    public function verifikasi_akun($token)
+    {
+        dd($token);
+    }
+
+    public function send_email($id)
+    {
+        $id_user = $id;
+        $pengguna = Login::find($id_user);
+        dd($pengguna);
+        $mail_username  = "siakadtk123@gmail.com";
+        $mail_password  = "Fathur160199Seven";
+        $mail_send  = $pengguna->login_email;
+
+        try {
+            $mail = new PHPMailer(); // create a new object
+            $mail->IsSMTP(true); // enable SMTP
+            $mail->SMTPDebug = 2;
+            $mail->Debugoutput = 'html';
+            $mail->SMTPAuth = true; // authentication enabled
+            $mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for Gmail
+            $mail->Host = "smtp.gmail.com";
+            $mail->Port = 465; // or 587 / 465
+            $mail->Username = $mail_username;
+            $mail->Password = $mail_password;
+
+            $mail->setFrom($mail_username, "Verifikasi Akun Pendaftaran Mahasiswa Baru");
+            $mail->addAddress($mail_send);
+
+            $mail->isHTML(true);
+            $mail->Subject = "Verifikasi Akun Pendaftaran Mahasiswa Baru";
+
+            $bodyverfikasi = "<b> Selamat! Akun anda berhasil dibuat! </b> <br />
+            Silahkan tekan tombol 'VERIFIKASI' Untuk melakukan konfirmasi pendaftaran. <br />
+            <br /> ";
+            $bodyverfikasi .= "<a href='";
+            $bodyverfikasi .= url('/');
+            $bodyverfikasi .= "'>";
+            $bodyverfikasi .= "VERIFIKASI";
+            $bodyverfikasi .= "</a>";
+            dd($bodyverfikasi);
+
+            $mail->Body = $bodyverfikasi;
+
+            $mail->send();
+            return redirect()->route('home')->with('status', "Verifikasi Akun telah berhasil. Silahkan login ke Dashboard untuk melihat status pendaftaran anda.");
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
+    }
+
     public function post_pendaftaran(Request $request)
     {
         // dd($request->data_pilihan_jurusan3);
@@ -136,7 +187,7 @@ class HomeController extends Controller
         $login_data->save();
         $login_data->data()->associate($save_mahasiswa->id);
         $login_data->save();
-
+        $this->send_email($login_data->id);
         return redirect()->route('home')->with('status', 'Pendaftaran berhasil! Silahkan login kedalam dashboard untuk melanjutkan proses pendaftaran.');
     }
 }

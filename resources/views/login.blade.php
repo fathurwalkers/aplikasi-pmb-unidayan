@@ -24,8 +24,8 @@
         <div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
           <div class="p-4 m-3">
             <img src="{{ asset('stisla/assets') }}/img/stisla-fill.svg" alt="logo" width="80" class="shadow-light rounded-circle mb-5 mt-2">
-            <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold">Stisla</span></h4>
-            <p class="text-muted">Before you get started, you must login or register if you don't already have an account.</p>
+            <h4 class="text-dark font-weight-normal">Selamat Datang</h4>
+            <p class="text-muted">Silahkan masukkan username dan password untuk memasuki halaman Dashboard.</p>
             @if (session('status'))
                 <div class="alert alert-info">
                     {{ session('status') }}
@@ -68,17 +68,17 @@
               </div>
 
               <div class="mt-5 text-center">
-                Don't have an account? <a href="auth-register.html">Create new one</a>
+                Belum punya akun? <a href="{{ route('home-pendaftaran') }}">Daftar Sekarang!</a>
               </div>
             </form>
 
             <div class="text-center mt-5 text-small">
-              Copyright &copy; Your Company. Made with 💙 by Stisla
-              <div class="mt-2">
+              Copyright &copy; PMB Unidayan. Made with 💙 by Stisla Forget by <a href="#">Tech.ID</a>
+              {{-- <div class="mt-2">
                 <a href="#">Privacy Policy</a>
                 <div class="bullet"></div>
                 <a href="#">Terms of Service</a>
-              </div>
+              </div> --}}
             </div>
           </div>
         </div>
@@ -86,10 +86,10 @@
           <div class="absolute-bottom-left index-2">
             <div class="text-light p-5 pb-2">
               <div class="mb-5 pb-3">
-                <h1 class="mb-2 display-4 font-weight-bold">Good Morning</h1>
-                <h5 class="font-weight-normal text-muted-transparent">Bali, Indonesia</h5>
+                <h1 class="mb-2 display-4 font-weight-bold">Selamat Datang</h1>
+                <h5 class="font-weight-normal text-muted-transparent">Kota Baubau, Indonesia</h5>
               </div>
-              Photo by <a class="text-light bb" target="_blank" href="https://unsplash.com/photos/a8lTjWJJgLA">Justin Kauffman</a> on <a class="text-light bb" target="_blank" href="https://unsplash.com">Unsplash</a>
+              {{-- Photo by <a class="text-light bb" target="_blank" href="https://unsplash.com/photos/a8lTjWJJgLA">Justin Kauffman</a> on <a class="text-light bb" target="_blank" href="https://unsplash.com">Unsplash</a> --}}
             </div>
           </div>
         </div>
