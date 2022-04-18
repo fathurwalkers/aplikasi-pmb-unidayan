@@ -36,7 +36,7 @@
                                 <div class="row mb-3">
                                     <div class="col-sm-12 col-md-12 col-lg-12">
                                         <div class="form-group">
-                                            <label for="data_foto">Pas Foto 3x4
+                                            <label for="data_foto">Pas Foto 3x4 (Format: .jpg, .jpeg / Maks: 2MB)
                                                 <span style="color:red;">*</span>
                                             </label>
                                             <input type="file" class="form-control @error('data_foto') is-invalid @enderror" id="data_foto" aria-describedby="emailHelp" placeholder="" name="data_foto">

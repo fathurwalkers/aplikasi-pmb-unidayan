@@ -35,7 +35,7 @@ class HomeController extends Controller
         // dd($request->data_pilihan_jurusan3);
         $validate_data                  = $request->validate(
             [
-                "data_foto"                 => 'required',
+                "data_foto"                 => 'required|image|mimes:jpeg,png,jpg|max:2048',
                 "data_nama_lengkap"         => 'required',
                 "data_jenis_kelamin"        => 'required|filled',
                 "data_email"                => 'required',
@@ -51,7 +51,7 @@ class HomeController extends Controller
                 "data_pilihan_jurusan3"     => 'required|filled',
             ],
             [
-                "data_foto.required"                        => 'Foto tidak boleh kosong.',
+                "data_foto.required"                        => 'Foto tidak boleh kosong, dan ukuran tidak lebih dari 2mb!',
                 "data_nama_lengkap.required"                => 'Nama Lengkap tidak boleh kosong.',
                 "data_jenis_kelamin.required|filled"        => 'Jenis Kelamin tidak boleh kosong',
                 "data_email.required"                       => 'Email tidak boleh kosong.',

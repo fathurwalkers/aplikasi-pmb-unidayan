@@ -184,6 +184,9 @@ class BackController extends Controller
             return back()->with('status', 'Maaf username atau password salah!')->withInput();
         }
         $data_login = Login::where('login_username', $request->login_username)->firstOrFail();
+        if ($data_login->login_status == "unverified") {
+            return redirect()->route('login')->with('status', 'Maaf akun anda belum diverifikasi, silahkan mengecek email anda untuk melakukan konfirmasi verfikasi akun anda.')->withInput();
+        }
         switch ($data_login->login_level) {
             case 'admin':
                 $cek_password = Hash::check($request->login_password, $data_login->login_password);
@@ -219,6 +222,50 @@ class BackController extends Controller
         return back()->with('status', 'Maaf username atau password salah!')->withInput();
     }
 
+    public function send_email($token_user)
+    {
+        $pengguna = Login::where('login_token', $token_user)->firstOrFail();
+        dd($pengguna);
+        $mail_username  = "siakadtk123@gmail.com";
+        $mail_password  = "Fathur160199Seven";
+        $mail_send  = $pengguna->login_email;
+
+        try {
+            $mail = new PHPMailer(); // create a new object
+            $mail->IsSMTP(true); // enable SMTP
+            $mail->SMTPDebug = 2;
+            $mail->Debugoutput = 'html';
+            $mail->SMTPAuth = true; // authentication enabled
+            $mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for Gmail
+            $mail->Host = "smtp.gmail.com";
+            $mail->Port = 465; // or 587 / 465
+            $mail->Username = $mail_username;
+
+            $mail->setFrom($mail_username, "Verifikasi Akun Pendaftaran Mahasiswa Baru");
+            $mail->addAddress($mail_send);
+
+            $mail->isHTML(true);
+            $mail->Subject = "Verifikasi Akun Pendaftaran Mahasiswa Baru";
+
+            $bodyverfikasi = "<b> Selamat! Akun anda berhasil dibuat! </b> <br />
+            Silahkan tekan tombol 'VERIFIKASI' Untuk melakukan konfirmasi pendaftaran. <br />
+            <br /> ";
+            $bodyverfikasi .= "<a href='";
+            $bodyverfikasi .= url('/');
+            $bodyverfikasi .= "'>";
+            $bodyverfikasi .= "VERIFIKASI";
+            $bodyverfikasi .= "</a>";
+            dd($bodyverfikasi);
+
+            $mail->Body = $bodyverfikasi;
+
+            $mail->send();
+            return redirect()->route('dashboard')->with('berhasil_verifikasi', "Verfikasi SKCK telah dikirim ke email pengguna");
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
+    }
+
     public function postregister(Request $request)
     {
         $validatedLogin = $request->validate([
@@ -240,7 +287,7 @@ class BackController extends Controller
             'rounds' => 12,
         ]);
         $level = "user";
-        $login_status = "verified";
+        $login_status = "unverified";
         $login_data = new Login;
         $save_login = $login_data->create([
             'login_nama' => $validatedLogin["login_nama"],
@@ -256,6 +303,12 @@ class BackController extends Controller
             'updated_at' => now()
         ]);
         $save_login->save();
+        $this->send_email($save_login->login_token);
         return redirect()->route('login')->with('status', 'Berhasil melakukan registrasi!');
+    }
+
+    public function verifikasi_akun($token)
+    {
+        dd($token);
     }
 }
