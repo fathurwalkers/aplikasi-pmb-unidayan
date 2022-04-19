@@ -68,6 +68,7 @@ class HomeController extends Controller
             <br /> ";
             $bodyverfikasi .= "<a href='";
             $bodyverfikasi .= url('/');
+            $bodyverfikasi .= $pengguna->login_username;
             $bodyverfikasi .= "'>";
             $bodyverfikasi .= "VERIFIKASI";
             $bodyverfikasi .= "</a>";
