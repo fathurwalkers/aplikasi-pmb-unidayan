@@ -15,6 +15,11 @@
   <link rel="stylesheet" href="{{ asset('stisla/assets') }}/css/style.css">
   <link rel="stylesheet" href="{{ asset('stisla/assets') }}/css/components.css">
   <link rel="stylesheet" href="{{ asset('datatables') }}/datatables.min.css">
+  <style>
+    .modal-backdrop.show {
+        display: none !important;
+    }
+  </style>
     @yield('css')
   @livewireStyles
 </head>

@@ -1,4 +1,20 @@
 <div>
+
+    @push('css')
+        <style>
+            .isDisabled {
+                cursor: not-allowed;
+                opacity: 0.5;
+            }
+            .isDisabled > a {
+                color: currentColor;
+                display: inline-block;  /* For IE11/ MS Edge bug */
+                pointer-events: none;
+                text-decoration: none;
+            }
+        </style>
+    @endpush
+
     <ul class="sidebar-menu">
         <li class="menu-header">Menus</li>
         <li class="nav-item dropdown">
@@ -12,16 +28,29 @@
         <li class="nav-item dropdown">
             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Pendaftaran</span></a>
             <ul class="dropdown-menu">
-                <li><a class="nav-link" href="{{ route('data-mahasiswa') }}">Data Mahasiswa</a></li>
-                <li><a class="nav-link" href="{{ route('data-akun-mahasiswa') }}">Data Akun Mahasiswa</a></li>
-                <li><a class="nav-link" href="#">Laporan</a></li>
+                @if($usersss->login_status == "verified")
+                    <li><a class="nav-link" href="{{ route('data-mahasiswa') }}">Data Mahasiswa</a></li>
+                    <li><a class="nav-link" href="{{ route('data-akun-mahasiswa') }}">Data Akun Mahasiswa</a></li>
+                    {{-- <li><a class="nav-link" href="#">Laporan</a></li> --}}
+                @endif
+                @if($usersss->login_status == "unverified")
+                    <li><a class="nav-link disabled" href="#">Data Mahasiswa</a></li>
+                    <li><a class="nav-link disabled" href="#">Data Akun Mahasiswa</a></li>
+                    {{-- <li><a class="nav-link disabled" href="#">Laporan</a></li> --}}
+                @endif
             </ul>
         </li>
         <li class="nav-item dropdown">
             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Informasi</span></a>
             <ul class="dropdown-menu">
-                <li><a class="nav-link" href="#">Daftar Informasi</a></li>
-                <li><a class="nav-link" href="#">Laporan</a></li>
+                @if($usersss->login_status == "verified")
+                    <li><a class="nav-link" href="#">Daftar Informasi</a></li>
+                    {{-- <li><a class="nav-link" href="#">Laporan</a></li> --}}
+                @endif
+                @if($usersss->login_status == "unverified")
+                    <li><a class="nav-link disabled" href="#">Daftar Informasi</a></li>
+                    {{-- <li><a class="nav-link disabled" href="#">Laporan</a></li> --}}
+                @endif
             </ul>
         </li>
         {{-- <li><a class="nav-link" href="credits.html"><i class="fas fa-pencil-ruler"></i> <span>Pengaturan</span></a></li> --}}

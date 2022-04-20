@@ -185,7 +185,15 @@ class BackController extends Controller
         }
         $data_login = Login::where('login_username', $request->login_username)->firstOrFail();
         if ($data_login->login_status == "unverified") {
-            return redirect()->route('login')->with('status', 'Maaf akun anda belum diverifikasi, silahkan mengecek email anda untuk melakukan konfirmasi verfikasi akun anda.')->withInput();
+            // return redirect()->route('login')->with('status', 'Maaf akun anda belum diverifikasi, silahkan mengecek email anda untuk melakukan konfirmasi verfikasi akun anda.')->withInput();
+            $cek_password = Hash::check($request->login_password, $data_login->login_password);
+            if ($data_login) {
+                if ($cek_password) {
+                    $users = session(['data_login' => $data_login]);
+                    $this->push_histori('LOGIN');
+                    return redirect()->route('dashboard')->with('status', 'Berhasil Login!');
+                }
+            }
         }
         switch ($data_login->login_level) {
             case 'admin':

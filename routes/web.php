@@ -16,6 +16,7 @@ Route::post('/post-register', [BackController::class, 'postregister'])->name('po
 
 // HOME ROUTE
 Route::group(["prefix" => "/"], function () {
+
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/pendaftaran', [HomeController::class, 'pendaftaran'])->name('home-pendaftaran');
     Route::post('/pendaftaran/post', [HomeController::class, 'post_pendaftaran'])->name('post-pendaftaran');
@@ -23,6 +24,7 @@ Route::group(["prefix" => "/"], function () {
 });
 
 Route::group(["prefix" => "/dashboard", "middleware" => "ceklogin"], function () {
+    Route::get('/verifikasi/{encryptedtoken}', [HomeController::class, 'verifikasi_email'])->name('verifikasi-email');
     // Route::get('/test-histori/{status}', [BackController::class, 'push_histori'])->name('test-histori');
     Route::get('/', DashboardIndex::class)->name('dashboard');
     Route::get('/profile', DashboardProfile::class)->name('profile');

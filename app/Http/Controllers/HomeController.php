@@ -32,9 +32,21 @@ class HomeController extends Controller
         ]);
     }
 
-    public function verifikasi_akun($token)
+    public function verifikasi_email($encryptedtoken)
     {
-        dd($token);
+        $session_login = session('data_login');
+        $find_user = Login::findOrFail($session_login->id);
+
+        $hash_from_session = hash('sha256', $find_user->login_username);
+        if ($encryptedtoken === $hash_from_session) {
+            $find_user->update([
+                'login_status' => 'verified',
+                'updated_at' => now()
+            ]);
+            return redirect()->route('dashboard')->with('status', 'Selamat, akun anda telah diverifikasi.');
+        } else {
+            return redirect()->route('dashboard')->with('status', 'Maaf proses Verifikasi Gagal. Token yang anda terima tidak sesuai.');
+        }
     }
 
     public function send_email($id)
@@ -44,6 +56,8 @@ class HomeController extends Controller
         $mail_username  = "siakadtk123@gmail.com";
         $mail_password  = "Fathur160199Seven";
         $mail_send  = $pengguna->login_email;
+
+        $hashed_username = hash('sha256', $pengguna->login_username);
 
         try {
             $mail = new PHPMailer(); // create a new object
@@ -64,11 +78,21 @@ class HomeController extends Controller
             $mail->Subject = "Verifikasi Akun Pendaftaran Mahasiswa Baru";
 
             $bodyverfikasi = "<b> Selamat! Akun anda berhasil dibuat! </b> <br />
-            Silahkan tekan tombol 'VERIFIKASI' Untuk melakukan konfirmasi pendaftaran. <br />
+            Silahkan klik link 'VERIFIKASI' Untuk melakukan konfirmasi pendaftaran. <br />
             <br /> ";
-            $bodyverfikasi .= "<a href='";
-            $bodyverfikasi .= url('/');
+            $bodyverfikasi .= "-- Data Akun -- <br />";
+            $bodyverfikasi .= "Username : ";
             $bodyverfikasi .= $pengguna->login_username;
+            $bodyverfikasi .= "<br />";
+            $bodyverfikasi .= "Password : ";
+            $bodyverfikasi .= $pengguna->login_username;
+            $bodyverfikasi .= "<br />";
+            $bodyverfikasi .= "<br />";
+            $bodyverfikasi .= "<a href='";
+            // $bodyverfikasi .= url('/dashboard/verifikasi');
+            // $bodyverfikasi .= "/";
+            // $bodyverfikasi .= $hashed_username;
+            $bodyverfikasi .= route('verifikasi-email', $hashed_username);
             $bodyverfikasi .= "'>";
             $bodyverfikasi .= "VERIFIKASI";
             $bodyverfikasi .= "</a>";
@@ -77,7 +101,7 @@ class HomeController extends Controller
             $mail->Body = $bodyverfikasi;
 
             $mail->send();
-            return redirect()->route('home')->with('status', "Pendaftaran Akun telah berhasil. Silahkan Login ke Dashboard dan melakukan pengecekan di Email anda untuk melakukan Verifikasi Akun agar dapat melanjutkan proses pendaftaran.");
+            return redirect()->route('login')->with('status', "Pendaftaran Akun telah berhasil. Silahkan Login terlebih dahulu ke Dashboard dan setelah itu melakukan pengecekan di Email anda untuk melakukan Verifikasi Akun agar dapat melanjutkan proses pendaftaran.");
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
@@ -164,8 +188,8 @@ class HomeController extends Controller
         $save_mahasiswa->save();
         // LOGIN
         $login_model                    = new Login;
-        $password                       = '12345';
-        $hashPassword                   = Hash::make($password, [
+        $usernamedanpassword            = strtolower(Str::random(10));
+        $hashPassword                   = Hash::make($usernamedanpassword, [
             'rounds' => 12,
         ]);
         $token_raw                      = Str::random(16);
@@ -176,7 +200,7 @@ class HomeController extends Controller
         $login_status                   = "unverified";
         $login_data                     = $login_model->create([
             'login_nama'                => $save_mahasiswa->data_nama_lengkap,
-            'login_username'            => 'pendaftar' . strtolower(Str::random(10)),
+            'login_username'            => $usernamedanpassword,
             'login_password'            => $hashPassword,
             'login_email'               => $save_mahasiswa->data_email,
             'login_telepon'             => $save_mahasiswa->data_telepon,
