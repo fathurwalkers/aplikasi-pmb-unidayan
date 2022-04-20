@@ -24,6 +24,8 @@
                 <li><a class="nav-link" href="#" data-toggle="modal" data-target="#modallihatprofile{{ $usersss->id }}">Profil Pengguna</a></li>
             </ul>
         </li>
+
+        @if($usersss->login_level == 'admin')
         <li class="menu-header">Pengelolaan</li>
         <li class="nav-item dropdown">
             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Pendaftaran</span></a>
@@ -40,6 +42,8 @@
                 @endif
             </ul>
         </li>
+        @endif
+
         <li class="nav-item dropdown">
             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Informasi</span></a>
             <ul class="dropdown-menu">
