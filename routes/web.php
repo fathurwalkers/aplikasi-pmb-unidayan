@@ -48,4 +48,5 @@ Route::group(["prefix" => "/dashboard", "middleware" => "ceklogin"], function ()
 
 Route::group(["prefix" => "/generate"], function () {
     Route::get('/mahasiswa', [GenerateController::class, 'generate_mahasiswa'])->name('generate-mahasiswa');
+    Route::get('/informasi', [GenerateController::class, 'generate_informasi'])->name('generate-informasi');
 });
