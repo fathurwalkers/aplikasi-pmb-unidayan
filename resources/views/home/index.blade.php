@@ -2,6 +2,14 @@
 
 @section('title', 'Beranda')
 
+@push('css')
+    <style>
+        .fixedimg {
+
+        }
+    </style>
+@endpush
+
 @section('header-content')
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex align-items-center">

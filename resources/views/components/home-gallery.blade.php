@@ -10,11 +10,11 @@
       <div class="container-fluid">
         <div class="row g-0">
 
-            @for ($i = 0; $i < 10; $i++)
+            @for ($i = 0; $i < 9; $i++)
                 <div class="col-lg-3 col-md-4">
                     <div class="gallery-item">
-                    <a href="{{ asset('default-img') }}/default{{$i}}.jpg" class="galelry-lightbox">
-                        <img src="{{ asset('default-img') }}/default{{$i}}.jpg" alt="" class="img-fluid">
+                    <a href="{{ asset('default-img') }}/foto-kampus{{$i}}.jpg" class="galelry-lightbox">
+                        <img src="{{ asset('default-img') }}/foto-kampus{{$i}}.jpg" alt="" class="img-fluid fixedimg">
                     </a>
                     </div>
                 </div>
