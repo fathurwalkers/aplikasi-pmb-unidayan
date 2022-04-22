@@ -5,6 +5,7 @@ use App\Http\Livewire\DashboardIndex;
 use App\Http\Controllers\GenerateController;
 use App\Http\Controllers\HomeController;
 use App\Http\Livewire\DashboardDataAkunMahasiswa;
+use App\Http\Livewire\DashboardDataInformasi;
 use App\Http\Livewire\DashboardDataMahasiswa;
 use App\Http\Livewire\DashboardProfile;
 use Illuminate\Support\Facades\Route;
@@ -29,10 +30,17 @@ Route::group(["prefix" => "/dashboard", "middleware" => "ceklogin"], function ()
     Route::get('/', DashboardIndex::class)->name('dashboard');
     Route::get('/profile', DashboardProfile::class)->name('profile');
 
+    // INFORMASI
+    Route::group(["prefix" => '/informasi'], function () {
+        Route::get('/', DashboardDataInformasi::class)->name('data-informasi');
+    });
+
     // MAHASISWA
     Route::group(["prefix" => '/mahasiswa'], function () {
         Route::get('/', DashboardDataMahasiswa::class)->name('data-mahasiswa');
     });
+
+    // AKUN MAHASISWA
     Route::group(["prefix" => '/akun-mahasiswa'], function () {
         Route::get('/', DashboardDataAkunMahasiswa::class)->name('data-akun-mahasiswa');
     });
