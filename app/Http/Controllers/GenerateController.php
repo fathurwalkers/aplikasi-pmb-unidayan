@@ -10,10 +10,36 @@ use Faker\Factory as Faker;
 use Illuminate\Support\Arr;
 use App\Models\Login;
 use App\Models\Data;
+use App\Models\Informasi;
 use App\Models\Prodi;
 
 class GenerateController extends Controller
 {
+    public function generate_informasi()
+    {
+        $faker                  = Faker::create('id_ID');
+        $array_number = [5, 6, 7, 8];
+        for ($i=0; $i < 20; $i++) {
+            $informasi_model            = new Informasi;
+            $informasi_kode             = Str::random(16);
+            $informasi_title = $faker->sentence(Arr::random($array_number), false);
+            $informasi_body = $faker->paragraph(Arr::random($array_number),false);
+            $informasi_Waktu = $faker->date();
+
+            $save_informasi = $informasi_model->create([
+                "informasi_kode" => $informasi_kode,
+                "informasi_title" => $informasi_title,
+                "informasi_body" => $informasi_body,
+                "informasi_waktu" => $informasi_Waktu,
+                "created_at" => now(),
+                "updated_at" => now()
+            ]);
+            $save_informasi->save();
+        }
+        $informasi_all = Informasi::all();
+        dd($informasi_all);
+    }
+
     public function generate_mahasiswa()
     {
         $faker                  = Faker::create('id_ID');
