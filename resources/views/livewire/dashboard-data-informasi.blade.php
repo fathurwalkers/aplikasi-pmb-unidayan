@@ -56,9 +56,36 @@
                         <h4 class="text-dark mb-0">{{ $contentheader }}</h4>
                     </div>
                     <div class="col-sm-6 col-md-6 col-lg-6 d-flex justify-content-end">
-                        <button class="btn btn-md btn-info d-flex justify-content-end">Tambah Informasi</button>
+                        <button class="btn btn-md btn-info d-flex justify-content-end" data-toggle="modal" data-target="#modaltambahinformasi">Tambah Informasi</button>
                     </div>
                 </div>
+                {{-- MODAL TAMBAH INFORMASI --}}
+                <div class="modal fade" id="modaltambahinformasi" tabindex="1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <h4 class="modal-title">Tambah Informasi</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body">Tambah informasi Baru</div>
+                            {{-- <form action="" method="POST" enctype="multipart/form-data"> --}}
+                                {{-- @csrf --}}
+                                <div class="modal-footer">
+                                    <button type="button" class="btn gray btn-outline-secondary" data-dismiss="modal">Cancel</button>
+                                    <button type="button" class="btn btn-outline-danger" >
+                                        Tambah
+                                    </button>
+                                </div>
+                            {{-- </form> --}}
+
+                        </div>
+                    </div>
+                </div>
+                {{-- End MODAL TAMBAH INFORMASI --}}
             </div>
         </div>
         <div class="section-body">
