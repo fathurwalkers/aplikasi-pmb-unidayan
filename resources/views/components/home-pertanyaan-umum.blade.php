@@ -1,5 +1,5 @@
 <div>
-    <div class="container">
+    {{-- <div class="container">
 
         <div class="section-title">
           <h2>Pertanyaan umum seputar Unidayan</h2>
@@ -56,5 +56,5 @@
           </ul>
         </div>
 
-      </div>
+    </div> --}}
 </div>

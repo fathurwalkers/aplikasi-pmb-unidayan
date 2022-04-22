@@ -5,7 +5,10 @@
 @push('css')
     <style>
         .fixedimg {
-
+            background-image: cover!important;
+            width: 100%!important;
+            height:200px!important;
+            display:block!important;
         }
     </style>
 @endpush
