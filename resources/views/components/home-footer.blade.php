@@ -7,17 +7,17 @@
                 <div class="col-lg-6 col-md-6 footer-contact">
                 <h3>UNIDAYAN INFO</h3>
                 <p>
-                    A108 Adam Street <br>
-                    New York, NY 535022<br>
-                    United States <br><br>
-                    <strong>Phone:</strong> +1 5589 55488 55<br>
-                    <strong>Email:</strong> info@example.com<br>
+                    Jl. Yos Sudarso No.43<br>
+                    Wale, Kec. Wolio, Kota Bau-Bau, Sulawesi Tenggara <br />
+                    Kode Pos : 93711<br><br>
+                    <strong>Phone:</strong> 04022821327<br>
+                    <strong>Email:</strong> pmb@unidayan.ac.id<br>
                 </p>
                 </div>
 
                 <div class="col-lg-6 col-md-6 footer-newsletter">
                 <h4>Bergabung untuk dapat Info dari Kami</h4>
-                <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+                <p>Daftarkan dan Subscribe Email anda untuk mendapatkan informasi terupdate dari kami</p>
                 <form action="" method="post">
                     <input type="email" name="email"><input type="submit" value="Subscribe">
                 </form>

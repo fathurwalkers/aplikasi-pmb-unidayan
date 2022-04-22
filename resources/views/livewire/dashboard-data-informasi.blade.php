@@ -50,7 +50,16 @@
     <section class="section">
 
         <div class="section-header">
-          <h4 class="text-dark pl-2 mb-0">{{ $contentheader }}</h4>
+            <div class="container">
+                <div class="row my-1">
+                    <div class="col-sm-6 col-md-6 col-lg-6">
+                        <h4 class="text-dark mb-0">{{ $contentheader }}</h4>
+                    </div>
+                    <div class="col-sm-6 col-md-6 col-lg-6 d-flex justify-content-end">
+                        <button class="btn btn-md btn-info d-flex justify-content-end">Tambah Informasi</button>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="section-body">
             <div class="card">
@@ -66,6 +75,7 @@
                                 @endif
                             </div>
                         </div>
+
                         <table id="example1" class="table table-bordered border-1" style="width:100%">
                             <thead class="thead-dark">
                                 <tr class="text-center">
