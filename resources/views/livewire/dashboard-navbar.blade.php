@@ -42,13 +42,12 @@
                 @endif
             </ul>
         </li>
-        @endif
 
         <li class="nav-item dropdown">
             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Informasi</span></a>
             <ul class="dropdown-menu">
                 @if($usersss->login_status == "verified")
-                    <li><a class="nav-link" href="#">Daftar Informasi</a></li>
+                    <li><a class="nav-link" href="{{ route('data-informasi') }}">Daftar Informasi</a></li>
                     {{-- <li><a class="nav-link" href="#">Laporan</a></li> --}}
                 @endif
                 @if($usersss->login_status == "unverified")
@@ -57,6 +56,8 @@
                 @endif
             </ul>
         </li>
+        @endif
+
         {{-- <li><a class="nav-link" href="credits.html"><i class="fas fa-pencil-ruler"></i> <span>Pengaturan</span></a></li> --}}
     </ul>
 

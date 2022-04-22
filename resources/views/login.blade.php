@@ -15,6 +15,17 @@
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{ asset('stisla/assets') }}/css/style.css">
   <link rel="stylesheet" href="{{ asset('stisla/assets') }}/css/components.css">
+
+  <style>
+      .bgfixed {
+          width: 1575px!important;
+          /* height: 2010px!important; */
+          /* background-image: fixed!important; */
+          /* object-fit: cover!important; */
+          background-size: cover!important;
+      }
+  </style>
+
 </head>
 
 <body>
@@ -82,7 +93,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-8 col-12 order-lg-2 order-1 min-vh-100 background-walk-y position-relative overlay-gradient-bottom" data-background="{{ asset('stisla/assets') }}/img/unsplash/login-bg.jpg">
+        <div class="bgfixed col-lg-8 col-12 order-lg-2 order-1 min-vh-100 background-walk-y position-relative overlay-gradient-bottom" data-background="{{ asset('default-img') }}/foto-kampus8.jpg">
           <div class="absolute-bottom-left index-2">
             <div class="text-light p-5 pb-2">
               <div class="mb-5 pb-3">

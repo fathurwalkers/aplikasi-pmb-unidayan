@@ -33,6 +33,15 @@
                 <div class="card-body">
 
                     <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                @if (session('status'))
+                                    <div class="alert alert-success">
+                                        {{ session('status') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
                         <table id="example1" class="table table-bordered border-1" style="width:100%">
                             <thead class="thead-dark">
                                 <tr class="text-center">
