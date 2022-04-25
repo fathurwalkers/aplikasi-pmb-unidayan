@@ -56,22 +56,20 @@
                                             <thead class="thead-dark">
                                                 <tr class="text-center">
                                                     <th>No</th>
-                                                    <th>Nama</th>
-                                                    <th>Email</th>
-                                                    <th>Jenis Kelamin</th>
-                                                    <th>Pendaftaran</th>
-                                                    <th>Pembayaran</th>
-                                                    {{-- <th>Akun</th> --}}
+                                                    <th>Keterangan</th>
+                                                    <th>Tipe</th>
+                                                    <th>Waktu</th>
                                                     <th>Kelola</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
 
-                                                @foreach ($mahasiswa as $item)
+                                                @foreach ($histori as $item)
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ Str::limit($item->data_nama_lengkap, 15) }}</td>
-                                                        <td>{{ $item->data_email }}</td>
+                                                        <td>{{ $item->histori_title }}</td>
+                                                        <td>{{ $item->histori_tipe }}</td>
+                                                        <td>{{ date("d-m-Y H:i:s", strtotime($item->histori_tanggal_waktu)) }}</td>
 
                                                         <td>
                                                             <div class="row">
@@ -114,5 +112,13 @@
         @endswitch
 
     </section>
+
+    @section('js')
+        <script>
+            $(document).ready(function() {
+                $('#example1').DataTable();
+            });
+        </script>
+    @endsection
 
 </div>
