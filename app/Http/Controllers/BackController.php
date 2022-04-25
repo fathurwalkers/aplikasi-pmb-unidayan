@@ -148,7 +148,10 @@ class BackController extends Controller
 
     public function index()
     {
-        return view('dashboard.index');
+        $histori = Histori::latest()->get();
+        return view('dashboard.index', [
+            'histori' => $histori
+        ]);
     }
 
     public function login()
