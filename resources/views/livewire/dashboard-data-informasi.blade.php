@@ -1,6 +1,7 @@
 <div>
 
     @section('css')
+    <script src="{{ asset('ckeditor') }}/ckeditor.js"></script>
     <style>
         .modal-backdrop.show {
             display: none !important;
@@ -71,33 +72,34 @@
                                 </button>
                             </div>
 
-                            <form wire:submit.prevent="tambah_informasi">
-                            <div class="modal-body">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-12 col-lg-12">
-                                            <div class="form-group">
-                                                <label style="color:black;">Judul Informasi : </label>
-                                                <input type="text" class="form-control" wire:model="informasi_title">
+                            <form action="{{ route('save-informasi') }}" method="POST">
+                                @csrf
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                                <div class="form-group">
+                                                    <label style="color:black;">Judul Informasi : </label>
+                                                    <input type="text" class="form-control" name="informasi_title">
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-12 col-lg-12">
-                                            <div class="form-group">
-                                                <label style="color:black;">Konten : </label>
-                                                <input type="text" class="form-control" wire:model="informasi_body">
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                                <label style="color:black;">Konten isi Informasi : </label>
+                                                <textarea name="editor1" id="editor1" name="informasi_body">
+                                                    Tuliskan isi konten informasi disini...
+                                                </textarea>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn gray btn-outline-secondary" data-dismiss="modal">Cancel</button>
-                                <button type="submit" class="btn btn-outline-danger" >
-                                    Tambah
-                                </button>
-                            </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn gray btn-primary" data-dismiss="modal">Batalkan</button>
+                                    <button type="submit" class="btn btn-success">
+                                        Simpan
+                                    </button>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -255,6 +257,7 @@
         <script>
             $(document).ready(function() {
                 $('#example1').DataTable();
+                CKEDITOR.replace( 'editor1' );
             });
         </script>
     @endsection

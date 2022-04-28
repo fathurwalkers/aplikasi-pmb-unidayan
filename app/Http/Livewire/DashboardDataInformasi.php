@@ -4,14 +4,19 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Informasi;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+use Faker\Factory as Faker;
+use Illuminate\Support\Arr;
+use App\Models\Login;
+use App\Models\Data;
+use App\Models\Histori;
 
 class DashboardDataInformasi extends Component
 {
     public $informasi;
     public $contentheader;
-
-    public $informasi_title;
-    public $informasi_body;
 
     protected $listeners = [
         'hapus' => 'hapusData',
@@ -32,28 +37,5 @@ class DashboardDataInformasi extends Component
         $find_informasi = Informasi::findOrFail($id);
         $find_informasi->forceDelete();
         return redirect()->route('data-informasi')->with('status', 'Data telah dihapus!');
-    }
-
-    public function tambah_informasi()
-    {
-        $informasi = new Informasi;
-        // $save_informasi = $informasi->create([
-        //     "informasi_kode" => ,
-        //     "informasi_title" => ,
-        //     "informasi_body" => ,
-        //     "informasi_waktu" => ,
-        //     "created_at" => now(),
-        //     "updated_at" => now()
-        // ]);
-        $save_informasi->save();
-        $this->resetInput();
-    }
-
-    private function resetInput()
-    {
-       $this->informasi_kode = null;
-       $this->informasi_title = null;
-       $this->informasi_body = null;
-       $this->informasi_waktu = null;
     }
 }

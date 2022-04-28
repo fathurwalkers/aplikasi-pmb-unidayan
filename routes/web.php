@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BackController;
 use App\Http\Livewire\DashboardIndex;
 use App\Http\Controllers\GenerateController;
@@ -33,6 +34,7 @@ Route::group(["prefix" => "/dashboard", "middleware" => "ceklogin"], function ()
     // INFORMASI
     Route::group(["prefix" => '/informasi'], function () {
         Route::get('/', DashboardDataInformasi::class)->name('data-informasi');
+        Route::post('/informasi/save', [AdminController::class, 'save_informasi'])->name('save-informasi');
     });
 
     // MAHASISWA
