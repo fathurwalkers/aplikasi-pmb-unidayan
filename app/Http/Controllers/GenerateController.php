@@ -103,7 +103,7 @@ class GenerateController extends Controller
                 'data_nama_lengkap' => $nama_lengkap,
                 'data_jenis_kelamin' => $random_jenis_kelamin,
                 'data_email' => $faker->email(),
-                'data_telepon' => intval($faker->phoneNumber()),
+                'data_telepon' => $faker->phoneNumber(),
                 'data_tempat_lahir' => $faker->city(),
                 'data_tanggal_lahir' => $faker->date(),
                 'data_asal_sekolah' => $random_sekolah,
