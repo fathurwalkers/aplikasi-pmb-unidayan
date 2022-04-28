@@ -87,7 +87,7 @@
                                         <div class="row">
                                             <div class="col-sm-12 col-md-12 col-lg-12">
                                                 <label style="color:black;">Konten isi Informasi : </label>
-                                                <textarea name="editor1" id="editor1" name="informasi_body">
+                                                <textarea id="editor1" name="informasi_body">
                                                     Tuliskan isi konten informasi disini...
                                                 </textarea>
                                             </div>
