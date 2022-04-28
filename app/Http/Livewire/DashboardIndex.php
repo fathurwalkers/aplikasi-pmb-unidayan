@@ -18,6 +18,10 @@ class DashboardIndex extends Component
         'name' => [''],
     ];
 
+    protected $listeners = [
+        'hapusLogAktifitas' => 'hapus_aktifitas'
+    ];
+
     public function render()
     {
         $session_user = session('data_login');
@@ -38,5 +42,13 @@ class DashboardIndex extends Component
         return view('livewire.dashboard-index')
         ->extends('layouts.admin-layout')
         ->section('main-content');
+    }
+
+    public function hapus_aktifitas($id)
+    {
+        $log_aktifitas_id = $id;
+        $findUser = Histori::findOrFail($log_aktifitas_id);
+        $findUser->forceDelete();
+        return redirect()->route('dashboard')->with('status', 'Data Aktifitas telah dihapus.');
     }
 }

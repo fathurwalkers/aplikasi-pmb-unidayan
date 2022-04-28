@@ -172,7 +172,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {{-- End MODAL --}}
+                                    {{-- End MODAL DELETE --}}
 
                                     {{-- MODAL LIHAT  --}}
                                     <div class="modal fade" id="modallihat{{ $item->id }}" tabindex="1" role="dialog" aria-hidden="true">
