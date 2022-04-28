@@ -65,23 +65,40 @@
                         <div class="modal-content">
 
                             <div class="modal-header">
-                                <h4 class="modal-title">Tambah Informasi</h4>
+                                <h4 class="modal-title" style="color:black;">Tambah Informasi</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
 
-                            <div class="modal-body">Tambah informasi Baru</div>
-                            {{-- <form action="" method="POST" enctype="multipart/form-data"> --}}
-                                {{-- @csrf --}}
-                                <div class="modal-footer">
-                                    <button type="button" class="btn gray btn-outline-secondary" data-dismiss="modal">Cancel</button>
-                                    <button type="button" class="btn btn-outline-danger" >
-                                        Tambah
-                                    </button>
+                            <form wire:submit.prevent="tambah_informasi">
+                            <div class="modal-body">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                                <label style="color:black;">Judul Informasi : </label>
+                                                <input type="text" class="form-control" wire:model="informasi_title">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                                <label style="color:black;">Konten : </label>
+                                                <input type="text" class="form-control" wire:model="informasi_body">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            {{-- </form> --}}
-
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn gray btn-outline-secondary" data-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-outline-danger" >
+                                    Tambah
+                                </button>
+                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>

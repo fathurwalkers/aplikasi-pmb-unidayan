@@ -10,7 +10,12 @@ class DashboardDataInformasi extends Component
     public $informasi;
     public $contentheader;
 
-    protected $listeners = ['hapus' => 'hapusData'];
+    public $informasi_title;
+    public $informasi_body;
+
+    protected $listeners = [
+        'hapus' => 'hapusData',
+    ];
 
     public function render()
     {
@@ -27,5 +32,28 @@ class DashboardDataInformasi extends Component
         $find_informasi = Informasi::findOrFail($id);
         $find_informasi->forceDelete();
         return redirect()->route('data-informasi')->with('status', 'Data telah dihapus!');
+    }
+
+    public function tambah_informasi()
+    {
+        $informasi = new Informasi;
+        // $save_informasi = $informasi->create([
+        //     "informasi_kode" => ,
+        //     "informasi_title" => ,
+        //     "informasi_body" => ,
+        //     "informasi_waktu" => ,
+        //     "created_at" => now(),
+        //     "updated_at" => now()
+        // ]);
+        $save_informasi->save();
+        $this->resetInput();
+    }
+
+    private function resetInput()
+    {
+       $this->informasi_kode = null;
+       $this->informasi_title = null;
+       $this->informasi_body = null;
+       $this->informasi_waktu = null;
     }
 }
