@@ -205,26 +205,33 @@
                                                                     <br />
                                                                     <b> Informasi Akun </b> <br>
                                                                     Username <br>
-                                                                    Password <br>
                                                                 </p>
                                                             </div>
                                                             <div class="col-sm-8 col-md-8 col-lg-8">
                                                                 <p class="fix-text">
                                                                     <br />
-                                                                    Nama Lengkap <br>
-                                                                    Jenis Kelamin <br>
-                                                                    Email <br>
-                                                                    No. HP / Telepon <br>
-                                                                    Tempat Lahir <br>
-                                                                    Tanggal Lahir <br>
+                                                                    : {{ $item->data_nama_lengkap }} <br>
+                                                                    @switch($item->data_jenis_kelamin)
+                                                                        @case("L")
+                                                                            : Laki - Laki <br>
+                                                                            @break
+                                                                        @case("P")
+                                                                            : Perempuan <br>
+                                                                            @break
+                                                                    @endswitch
+                                                                    : {{ $item->data_email }} <br>
+                                                                    : {{ $item->data_telepon }} <br>
+                                                                    : {{ $item->data_tempat_lahir }} <br>
+                                                                    : {{ date("d-m-Y", strtotime($item->data_tanggal_lahir)) }} <br>
                                                                     <br />
                                                                     <br />
-                                                                    Asal Sekolah <br>
-                                                                    Tahun Lulus <br>
+                                                                    : {{ $item->data_asal_sekolah }}  <br>
+                                                                    : {{ $item->data_tahun_lulus }}  <br>
                                                                     <br />
                                                                     <br />
-                                                                    Username <br>
-                                                                    Password <br>
+                                                                    @foreach ($item->login as $item2)
+                                                                    : {{ $item2->login_username }}  <br>
+                                                                    @endforeach
                                                                 </p>
                                                             </div>
                                                         </div>

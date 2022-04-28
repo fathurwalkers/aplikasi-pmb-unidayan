@@ -83,13 +83,13 @@ class GenerateController extends Controller
 
             switch ($random_jenis_kelamin) {
                 case 'L':
-                    $data_foto = "default-img/male.jpg";
+                    $data_foto = "male.jpg";
                     $nama_depan = $faker->firstNameMale();
                     $nama_belakang = $faker->lastNameMale();
                     $nama_lengkap = $nama_depan . " " . $faker->words($random_number, true) . " " . $nama_belakang;
                     break;
                 case 'P':
-                    $data_foto = "default-img/female.jpg";
+                    $data_foto = "female.jpg";
                     $nama_depan = $faker->firstNameFemale();
                     $nama_belakang = $faker->lastNameFemale();
                     $nama_lengkap = $nama_depan . " " . $faker->words($random_number, true) . " " . $nama_belakang;
