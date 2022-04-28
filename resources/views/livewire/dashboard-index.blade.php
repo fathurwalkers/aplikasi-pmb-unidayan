@@ -100,10 +100,12 @@
                                                                         Ubah
                                                                     </a> --}}
 
-                                                                    <a href="#" class="btn btn-danger rounded btn-sm" data-toggle="modal" data-target="#modaldelete{{ $item->id }}">
-                                                                        <i class="fas fa-trash"></i>
-                                                                        Hapus
-                                                                    </a>
+                                                                    @if ($users->login_level == "admin")
+                                                                        <a href="#" class="btn btn-danger rounded btn-sm" data-toggle="modal" data-target="#modaldelete{{ $item->id }}">
+                                                                            <i class="fas fa-trash"></i>
+                                                                            Hapus
+                                                                        </a>
+                                                                    @endif
 
                                                                 </div>
                                                             </div>
