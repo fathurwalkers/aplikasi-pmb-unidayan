@@ -86,13 +86,13 @@ class GenerateController extends Controller
                     $data_foto = "male.jpg";
                     $nama_depan = $faker->firstNameMale();
                     $nama_belakang = $faker->lastNameMale();
-                    $nama_lengkap = $nama_depan . " " . $faker->words($random_number, true) . " " . $nama_belakang;
+                    $nama_lengkap = $nama_depan . " " . $nama_belakang;
                     break;
                 case 'P':
                     $data_foto = "female.jpg";
                     $nama_depan = $faker->firstNameFemale();
                     $nama_belakang = $faker->lastNameFemale();
-                    $nama_lengkap = $nama_depan . " " . $faker->words($random_number, true) . " " . $nama_belakang;
+                    $nama_lengkap = $nama_depan . " " . $nama_belakang;
                     break;
             }
 

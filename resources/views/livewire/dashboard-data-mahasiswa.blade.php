@@ -30,13 +30,13 @@
         </div>
         <div class="section-body">
             <div class="card">
-                <div class="card-title">
+                {{-- <div class="card-title">
                     <div class="row">
                         <div class="col-sm-12 col-md-12 col-lg-12">
                             Log Aktifitas
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="card-body">
 
                     <div class="container">
