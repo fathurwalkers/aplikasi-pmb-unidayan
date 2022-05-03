@@ -30,18 +30,28 @@
                     <div class="card border-success mb-3" style="max-width: 18rem;">
                         <div class="card-header bg-transparent border-success">Header</div>
                             <div class="card-body text-success">
-                                <h5 class="card-title">Success card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <h5 class="card-title">{{ Str::limit($item->informasi_title, 26) }}</h5>
+                                <p class="card-text">
+                                    {{ Str::limit($item->informasi_body, 100) }}
+                                </p>
                             </div>
-                        <div class="card-footer bg-transparent border-success">Footer</div>
+                        <div class="card-footer bg-transparent border-success">
+                            <div class="row ml-auto d-flex justify-content-end">
+                                <div class="col-sm-12 col-md-12 col-lg-12 ml-auto d-flex justify-content-end">
+                                    <button class="btn btn-sm btn-info shadow text-light">
+                                        Lihat Selengkapnya...
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 @endforeach
             </div>
 
-            <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-12">
-                    {{ $informasi->links() }}
+            <div class="row my-1 mt-4">
+                <div class="col-sm-12 col-md-12 col-lg-12 d-flex justify-content-center mt-3">
+                    {{ $informasi->onEachSide(0)->links('pagination::bootstrap-4') }}
                 </div>
             </div>
         </div>
