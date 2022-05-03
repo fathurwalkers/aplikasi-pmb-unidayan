@@ -24,6 +24,11 @@ class HomeController extends Controller
         ]);
     }
 
+    public function home_informasi()
+    {
+        return view('home.informasi');
+    }
+
     public function pendaftaran()
     {
         $prodi = Prodi::all();
