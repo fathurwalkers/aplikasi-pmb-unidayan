@@ -24,6 +24,7 @@ Route::group(["prefix" => "/"], function () {
     Route::post('/pendaftaran/post', [HomeController::class, 'post_pendaftaran'])->name('post-pendaftaran');
     Route::get('/sendmail/{id}', [HomeController::class, 'send_email'])->name('home-send-email');
     Route::get('/informasi', [HomeController::class, 'home_informasi'])->name('home-informasi');
+    Route::get('/informasi/{id}', [HomeController::class, 'lihat_informasi'])->name('home-lihat-informasi');
 });
 
 Route::group(["prefix" => "/dashboard", "middleware" => "ceklogin"], function () {

@@ -33,6 +33,11 @@ class HomeController extends Controller
         ]);
     }
 
+    public function lihat_informasi($id)
+    {
+        $informasi = Informasi::find($id);
+    }
+
     public function pendaftaran()
     {
         $prodi = Prodi::all();
