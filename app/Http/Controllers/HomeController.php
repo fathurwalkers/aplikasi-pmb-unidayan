@@ -12,6 +12,7 @@ use Faker\Factory as Faker;
 use Illuminate\Support\Arr;
 use App\Models\Login;
 use App\Models\Data;
+use App\Models\Informasi;
 use App\Models\Prodi;
 
 class HomeController extends Controller
@@ -26,7 +27,10 @@ class HomeController extends Controller
 
     public function home_informasi()
     {
-        return view('home.informasi');
+        $informasi = Informasi::latest()->paginate(6);
+        return view('home.informasi', [
+            'informasi' => $informasi
+        ]);
     }
 
     public function pendaftaran()
