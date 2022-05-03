@@ -28,11 +28,16 @@
                 @foreach ($informasi as $item)
                 <div class="col-sm-4 col-md-4 col-lg-4">
                     <div class="card border-success mb-3" style="max-width: 18rem;">
-                        <div class="card-header bg-transparent border-success">Header</div>
+                        {{-- <div class="card-header bg-transparent border-success">Header</div> --}}
                             <div class="card-body text-success">
-                                <h5 class="card-title">{{ Str::limit($item->informasi_title, 26) }}</h5>
+                                <h5 class="card-title">
+                                    <span style="color:black;">{{ Str::limit($item->informasi_title, 34) }}</span>
+                                </h5>
                                 <p class="card-text">
                                     {{ Str::limit($item->informasi_body, 100) }}
+                                    <br />
+                                    <br />
+                                    <span style="color:black;">{{ "Terbit Pada Tanggal" . date(" : d/m/Y", strtotime($item->informasi_waktu)) }}</span>
                                 </p>
                             </div>
                         <div class="card-footer bg-transparent border-success">
