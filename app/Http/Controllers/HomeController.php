@@ -36,6 +36,9 @@ class HomeController extends Controller
     public function lihat_informasi($id)
     {
         $informasi = Informasi::find($id);
+        return view('home.lihat-informasi', [
+            'informasi' => $informasi
+        ]);
     }
 
     public function pendaftaran()
