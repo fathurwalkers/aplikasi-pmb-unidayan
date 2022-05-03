@@ -25,6 +25,15 @@
 
         <div class="container">
             <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                </div>
+            </div>
+            <div class="row">
                 @foreach ($informasi as $item)
                 <div class="col-sm-4 col-md-4 col-lg-4">
                     <div class="card border-success mb-3" style="max-width: 18rem;">
@@ -43,7 +52,7 @@
                         <div class="card-footer bg-transparent border-success">
                             <div class="row ml-auto d-flex justify-content-end">
                                 <div class="col-sm-12 col-md-12 col-lg-12 ml-auto d-flex justify-content-end">
-                                    <button class="btn btn-sm btn-info shadow text-light">
+                                    <button class="btn btn-sm btn-info shadow text-light" onclick="location.href = '{{ route('home-lihat-informasi', $item->id) }}';">
                                         Lihat Selengkapnya...
                                     </button>
                                 </div>

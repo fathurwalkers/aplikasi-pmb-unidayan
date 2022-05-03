@@ -36,9 +36,13 @@ class HomeController extends Controller
     public function lihat_informasi($id)
     {
         $informasi = Informasi::find($id);
-        return view('home.lihat-informasi', [
-            'informasi' => $informasi
-        ]);
+        if ($informasi == null) {
+            return redirect()->route('home-informasi')->with('status', 'Informasi yang anda pilih tidak ada atau telah dihapus.');
+        } else {
+            return view('home.lihat-informasi', [
+                'informasi' => $informasi
+            ]);
+        }
     }
 
     public function pendaftaran()
