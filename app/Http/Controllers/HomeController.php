@@ -75,7 +75,8 @@ class HomeController extends Controller
         $id_user = $id;
         $pengguna = Login::find($id_user);
         $mail_username  = "siakadtk123@gmail.com";
-        $mail_password  = "Fathur160199Seven";
+        // $mail_password  = "Fathur160199Seven";
+        $mail_password  = "vaceknkgistnsooo";
         $mail_send  = $pengguna->login_email;
 
         $hashed_username = hash('sha256', $pengguna->login_username);
