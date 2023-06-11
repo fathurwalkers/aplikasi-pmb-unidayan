@@ -69,8 +69,7 @@ class HomeController extends Controller
             return redirect()->route('dashboard')->with('status', 'Maaf proses Verifikasi Gagal. Token yang anda terima tidak sesuai.');
         }
     }
-
-    public function send_email($id)
+   public function send_email($id)
     {
         $id_user = $id;
         $pengguna = Login::find($id_user);
